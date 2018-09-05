@@ -12,6 +12,12 @@ public class Principal {
 		pessoa2.calcularIMC();
 		pessoa2.diagonostico();
 		pessoa2.imprimir();
+		
+		Paciente pessoa3 = new Paciente(15,0.95);
+		pessoa2.nome = "P3";
+		pessoa2.calcularIMC();
+		pessoa2.diagonostico();
+		pessoa2.imprimir();
 	}
 
 }
