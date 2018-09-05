@@ -1,13 +1,13 @@
 
-public class TestaIMC {
+public class Principal {
 	public static void main(String[] args) {
-		IMC pessoa = new IMC(77,1.77);	
+		Paciente pessoa = new Paciente(77,1.77);	
 		pessoa.nome = "P1";
 		pessoa.calcularIMC();
 		pessoa.diagonostico();
 		pessoa.imprimir();
 		
-		IMC pessoa2 = new IMC(62,1.64);
+		Paciente pessoa2 = new Paciente(62,1.64);
 		pessoa2.nome = "P2";
 		pessoa2.calcularIMC();
 		pessoa2.diagonostico();

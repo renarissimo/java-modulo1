@@ -1,4 +1,4 @@
-public class IMC {
+public class Paciente {
 
 	double peso;
 	double altura;
@@ -6,7 +6,7 @@ public class IMC {
 	String nome;
 
 	
-	public IMC(double peso, double altura) {
+	public Paciente(double peso, double altura) { //construtor
 		this.peso = peso;
 		this.altura = altura;
 	}
