@@ -2,7 +2,6 @@ public class Paciente {
 
 	double peso;
 	double altura;
-	String classificacao;
 	String nome;
 
 	

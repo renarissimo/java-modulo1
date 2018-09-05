@@ -14,10 +14,10 @@ public class Principal {
 		pessoa2.imprimir();
 		
 		Paciente pessoa3 = new Paciente(15,0.95);
-		pessoa2.nome = "P3";
-		pessoa2.calcularIMC();
-		pessoa2.diagonostico();
-		pessoa2.imprimir();
+		pessoa3.nome = "P3";
+		pessoa3.calcularIMC();
+		pessoa3.diagonostico();
+		pessoa3.imprimir();
 	}
 
 }
