@@ -4,6 +4,12 @@ public class IMC {
 	double altura;
 	String classificacao;
 
+	
+	public IMC(double peso, double altura) {
+		this.peso = peso;
+		this.altura = altura;
+	}
+	
 	double calcularIMC() {		
 		double imc = peso / (altura * altura);
 		return imc;

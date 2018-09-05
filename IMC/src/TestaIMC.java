@@ -1,12 +1,15 @@
 
 public class TestaIMC {
 	public static void main(String[] args) {
-		IMC pessoa = new IMC();
-		pessoa.altura = 1.77;
-		pessoa.peso = 77;
+		IMC pessoa = new IMC(77,1.77);		
 		pessoa.calcularIMC();
 		pessoa.diagonostico();
 		pessoa.imprimir();
+		
+		IMC pessoa2 = new IMC(62,1.64);		
+		pessoa2.calcularIMC();
+		pessoa2.diagonostico();
+		pessoa2.imprimir();
 	}
 
 }
