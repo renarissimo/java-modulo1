@@ -3,6 +3,7 @@ public class IMC {
 	double peso;
 	double altura;
 	String classificacao;
+	String nome;
 
 	
 	public IMC(double peso, double altura) {
@@ -35,6 +36,6 @@ public class IMC {
 	}
 	
 	 void imprimir(){
-         System.out.println("A classificação é " +diagonostico()); 
+         System.out.println("A classificação é " +nome+ " com o diagnóstico de " +diagonostico()); 
      }
 }	
