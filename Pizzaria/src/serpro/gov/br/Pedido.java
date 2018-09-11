@@ -1,22 +1,17 @@
 package serpro.gov.br;
 
 public class Pedido {
-	String sabor;
-	double distancia;
-	double preco;
-	boolean fds;
+	Entrega entrega;
+	Pizza pizza;		
 	
-	
-	public Pedido (String sabor, double distancia, double preco, boolean fds) {
-		this.sabor = sabor;
-		this.distancia = distancia;
-		this.preco = preco;
-		this.fds = fds;
+	public Pedido (Entrega entrega, Pizza pizza) {
+		this.entrega = entrega;
+		this.pizza = pizza;		
 	}	
 
-	static double calcularPedido() {
+	double calcularPedido() {
 		double valorTotal = 0.0;
-		valorTotal = (Pizza.calcularPreco() + Entrega.calcularEntrega());
+		valorTotal = (pizza.calcularPreco() + entrega.calcularEntrega());
 		return valorTotal;								
 	}	
 }

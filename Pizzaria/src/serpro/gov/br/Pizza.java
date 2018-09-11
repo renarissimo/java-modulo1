@@ -1,13 +1,13 @@
 package serpro.gov.br;
 
 public class Pizza {	
-	private static String sabor;
+	String sabor;
 	
 	public Pizza (String sabor) {		
-		this.setSabor(sabor);
+		this.sabor = sabor;
 	}
 	
-	static double calcularPreco() {
+	double calcularPreco() {
 		double preco = 0.0;
 		if (getSabor() == "Portuguesa") preco = 40.00;		
 		else if (getSabor() == "Mussarela") preco =  35.00;	   
@@ -17,12 +17,8 @@ public class Pizza {
 		return preco;
 	}
 
-	public static String getSabor() {
+	public String getSabor() {
 		return sabor;
 	}
-
-	public static void setSabor(String sabor) {
-		Pizza.sabor = sabor;
-	}
-
+	
 }
