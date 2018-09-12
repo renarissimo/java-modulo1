@@ -1,12 +1,12 @@
 package serpro.gov.br;
 
 public class Pedido {
-	Pizza pizza;
 	Entrega entrega;
+	Pizza pizza;		
 	
-	public Pedido (Pizza pizza, Entrega entrega) {
-		this.pizza = pizza;
+	public Pedido (Entrega entrega, Pizza pizza) {
 		this.entrega = entrega;
+		this.pizza = pizza;		
 	}	
 
 	double calcularPedido() {
