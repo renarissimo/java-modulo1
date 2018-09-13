@@ -1,15 +1,27 @@
 package br.gov.serpro.curso;
 
-public class Principal {
-	public static void main(String[] args) {
-	
-		Moeda moeda1 = new Moeda();	
-		Moeda moeda2 = new Moeda();
-		Moeda moeda3 = new Moeda();
-		
-		moeda1.valor = 0.5;
-		moeda2.valor = 0.10;
-		moeda2.valor = 0.25;
-				
-	}		
-}
+import java.util.ArrayList;
+import java.util.Arrays;
+
+	public class Principal {
+	    
+	    public static void main(String[] args){
+	            ArrayList<double> moedas = new ArrayList<double> ();
+	            Cofre cofre =  new Cofre();
+	            
+	            cofre.moedas.add(0.1);
+	            cofre.moedas.add(0.10);
+	            cofre.moedas.add(0.5);
+	            cofre.moedas.add(0.50);
+	            cofre.moedas.add(1);
+	            cofre.moedas.add(0.25);
+	            cofre.moedas.add(0.10);
+	            cofre.moedas.add(0.5);
+	            cofre.moedas.add(0.50);
+	            cofre.moedas.add(0.10);
+	            
+	            System.out.println("Quantidade de moedas inseridas no Cofre = " + Cofre.quantidade());	            
+	            System.out.println("Moedas no Cofre com o valor de = " + moedas.get(1) + " - " Cofre.determinadoValor(moedas.get(1));
+	            System.out.println("Moeda com o maior valor no Cofre = " + Cofre.maiorValor());	            	            	            	            
+	        }
+}				
