@@ -5,8 +5,7 @@ import java.util.Arrays;
 
 	public class Principal {
 	    
-	    public static void main(String[] args){
-	            ArrayList<double> moedas = new ArrayList<double> ();
+	    public static void main(String[] args){	            
 	            Cofre cofre =  new Cofre();
 	            
 	            cofre.moedas.add(0.1);
@@ -18,7 +17,7 @@ import java.util.Arrays;
 	            cofre.moedas.add(0.10);
 	            cofre.moedas.add(0.5);
 	            cofre.moedas.add(0.50);
-	            cofre.moedas.add(0.10);
+	            cofre.moedas.add(0.10);	            	            
 	            
 	            System.out.println("Quantidade de moedas inseridas no Cofre = " + Cofre.quantidade());	            
 	            System.out.println("Moedas no Cofre com o valor de = " + moedas.get(1) + " - " Cofre.determinadoValor(moedas.get(1));

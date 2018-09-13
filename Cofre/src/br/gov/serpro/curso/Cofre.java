@@ -1,11 +1,11 @@
 package br.gov.serpro.curso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Cofre {			
-	ArrayList<double> moedas = new ArrayList<double>();
 		
+	ArrayList<double> moedas = new ArrayList<double>();
+			
 		public int quantidade() {
 		    return (moedas.size()+1);
 		}
