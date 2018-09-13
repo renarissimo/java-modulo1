@@ -3,17 +3,16 @@ package br.gov.serpro.curso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cofre {
-	double valor;
-	ArrayList<double> moedas = new ArrayList<double> ();        		
-
+public class Cofre {			
+	ArrayList<double> moedas = new ArrayList<double>();
+		
 		public int quantidade() {
 		    return (moedas.size()+1);
 		}
 
 		public double maiorValor() {
-			for (int x = 0; x <= moedas.size(); x++) {
-				double valor = 0.0;
+			double valor = 0.0;
+			for (int x = 0; x <= moedas.size(); x++) {				
 			    if (moedas(x) > valor) {
 			    	valor == moedas(x);
 			    }
