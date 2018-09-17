@@ -23,7 +23,7 @@ public class Cofre {
 		public int determinadoValor(double moedaValor){
 			int quantidade = 0;			
 			for (int x = 0; x <= moedas.size(); x++) {				
-			    if (moedaValor == moedas.getMoeda(x)) {
+			    if (moedaValor == moedas.get(x)) {
 			    	quantidade++;
 			    }
 			}
