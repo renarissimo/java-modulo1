@@ -20,7 +20,7 @@ import java.util.Arrays;
 	            cofre.moedas.add(0.10);	            	            
 	            
 	            System.out.println("Quantidade de moedas inseridas no Cofre = " + Cofre.quantidade());	            
-	            System.out.println("Moedas no Cofre com o valor de = " + moedas.get(1) + " - " Cofre.determinadoValor(moedas.get(1));
-	            System.out.println("Moeda com o maior valor no Cofre = " + Cofre.maiorValor());	            	            	            	            
+	            //System.out.println("Moedas no Cofre com o valor de = " + moedas.get(1) + " - " Cofre.determinadoValor(moedas.get(1));
+	            //System.out.println("Moeda com o maior valor no Cofre = " + Cofre.maiorValor());	            	            	            	            
 	        }
 }				

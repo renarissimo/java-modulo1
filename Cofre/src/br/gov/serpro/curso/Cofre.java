@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 public class Cofre {			
 		
-	ArrayList<double> moedas = new ArrayList<double>();
+	ArrayList<Moeda> moedas = new ArrayList<Moeda>();
 			
 		public int quantidade() {
-		    return (moedas.size()+1);
+		    return (moedas.size());
 		}
-
+	
 		public double maiorValor() {
-			double valor = 0.0;
-			for (int x = 0; x <= moedas.size(); x++) {				
-			    if (moedas(x) > valor) {
-			    	valor == moedas(x);
+			Double valor = 0.0 ;
+			for (int x = 0; x <= moedas.size(); x++) {
+				if ((moedas.get(x) > valor) {
+			    	valor = moedas.get(x);
 			    }
 			}
 			return (valor);
-		}
+	
 		
 		public int determinadoValor(double moedaValor){
-			for (int x = 0; x <= moedas.size(); x++) {
-				int quantidade = 0;
-			    if (moedaValor == moedas(x)) {
+			int quantidade = 0;			
+			for (int x = 0; x <= moedas.size(); x++) {				
+			    if (moedaValor.equals(moedas.get(x))) {
 			    	quantidade++;
 			    }
 			}
 			return (quantidade);
-		}
+	
 		
 }
