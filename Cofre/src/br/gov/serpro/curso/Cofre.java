@@ -9,25 +9,40 @@ public class Cofre {
 		public int quantidade() {
 		    return (moedas.size());
 		}
-	
-		public double maiorValor() {
-			Double valor = 0.0 ;
-			for (int x = 0; x <= moedas.size(); x++) {
-				if ((moedas.get(x) > valor) {
-			    	valor = moedas.get(x);
+			
+		public Moeda maiorValor() {
+			double valor = 0;
+			for (int x = 0; x < moedas.size(); x++) {				
+			    if (moedas.get(x).getValorMoeda() > valor) {
+			    	valor = moedas.get(x).getValorMoeda();
 			    }
 			}
-			return (valor);
-	
+			return new Moeda(valor);
+			// poderia ser return new Moeda(valor).getValorMoeda(); 
+		}
 		
-		public int determinadoValor(double moedaValor){
+		public void adicionarMoeda(Moeda valor) {
+			moedas.add(valor);
+		}						
+		
+		public int retornarQuantidadedeMoedasValor(double moedaValor){
 			int quantidade = 0;			
-			for (int x = 0; x <= moedas.size(); x++) {				
-			    if (moedaValor.equals(moedas.get(x))) {
+			for (int x = 0; x < moedas.size(); x++) {
+				
+			    if (moedaValor == moedas.get(x).getValorMoeda()) {
+
 			    	quantidade++;
 			    }
 			}
 			return (quantidade);
-	
+		}
+		
+		public double retornarValorTotal() {
+			double valor = 0;
+			for (int x = 0; x < moedas.size(); x++) {							    
+			    	valor += moedas.get(x).getValorMoeda();
+			    }			
+			return(valor);			 
+		}
 		
 }
