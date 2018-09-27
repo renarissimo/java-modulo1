@@ -1,6 +1,6 @@
 package br.gov.serpro.curso;
 import java.util.Date;
-
+//
 public class CartaoCredito extends Pagamento {
 		    
 	private int numero;

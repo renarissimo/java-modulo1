@@ -1,7 +1,7 @@
 package br.gov.serpro.curso;
 
 public class DetalhePedido {
-
+	//
 	private int quantidade;
 	private String statusImposto;
 	

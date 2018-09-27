@@ -1,7 +1,7 @@
 package br.gov.serpro.curso;
 
 public class Item {
-	
+	//
 	private double pesoEntrega;
     private String descricao;
 

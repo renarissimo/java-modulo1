@@ -1,7 +1,7 @@
 package br.gov.serpro.curso;
 
 public class Cliente {
-	
+	//	
 	private String nome;
 	private String endereco;
 

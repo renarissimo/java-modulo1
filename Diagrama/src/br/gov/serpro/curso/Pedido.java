@@ -1,6 +1,6 @@
 package br.gov.serpro.curso;
 import java.util.Date;
-
+//
 public class Pedido {
 	private Date data;
 	private String status;
