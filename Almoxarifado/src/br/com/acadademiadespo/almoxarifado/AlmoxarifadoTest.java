@@ -15,7 +15,7 @@ import org.junit.Test;
 public class AlmoxarifadoTest {
 
 	@Test
-	public void quantidadeDeMaterialEstocado() {
+	public void quantidadeEmEstoqueVazio() {
        // dado que eu tenho um estoque vazio
 		Estoque estoque = new Estoque();		
 	   // quando eu requisitar a quantidade total de materiais deste estoque

@@ -13,6 +13,7 @@ public class Principal {
 		
 		calcular1.retornarFahrenheit();
 		calcular1.imprimirTemperatura();
+		//versionamento GIT
 
 	}
 
