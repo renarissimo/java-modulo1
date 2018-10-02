@@ -14,6 +14,7 @@ public class TesteCofre {
 	public void before() {
 		cofre = new Cofre();
 						
+		
 		cofre.adicionarMoeda(new Moeda(0.01));
         cofre.adicionarMoeda(new Moeda(0.05));
         cofre.adicionarMoeda(new Moeda(0.50));
@@ -38,12 +39,12 @@ public class TesteCofre {
 	
 	@Test
     public void testRetornarMaiorValor() {      
-    assertEquals(1.0,cofre.maiorValor().getValorMoeda(),1.0);
+    assertEquals(1.0,cofre.maiorValor().getValorMoeda(),0.02); // precisão
     }
 	
 	@Test
     public void testValorTotal() {      
-    assertEquals(2.56,cofre.retornarValorTotal(),1.0);
+    assertEquals(2.56,cofre.retornarValorTotal(),0.02); // precisão
     }				    
 
 }
