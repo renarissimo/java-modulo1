@@ -1,38 +1,35 @@
-package br.gov.serpro.curso;
+package br.gov.serpro.curso.teste;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class TesteCarros {
+import br.gov.serpro.curso.CarroDeCorrida;
+import br.gov.serpro.curso.CarrosSoma;
+
+public class TesteCarrosSoma {
 	
-	private Carros carros;
+	private CarroDeCorrida carros;
 	
 	@Before
-	public void before() {
-		carros = new Carros();
-		carros.potencia = 10;
+	public void incializaCarros() {
+		carros = new CarrosSoma("teste",10,100);		
 	}
     
     @Test
     public void testCarroParado() {
-//        Carros c = new Carros();       
         assertEquals(0,carros.getVelocidade());
        }
     
     @Test
     public void testAcelerar() {
-        /*Carros c = new Carros();
-        c.potencia = 10;*/
         carros.acelerar();
         assertEquals(10,carros.getVelocidade());
        }
     
     @Test
     public void testFrear() {
-        //Carros c = new Carros();
-        //carros.potencia = 10;
         carros.acelerar();
         carros.frear();
         assertEquals(5,carros.getVelocidade());
@@ -40,8 +37,6 @@ public class TesteCarros {
     
     @Test
     public void testFrearAteZero() {
-        //Carros c = new Carros();
-        //carros.potencia = 10;
         carros.acelerar();
         carros.frear();
         carros.frear();
@@ -49,5 +44,11 @@ public class TesteCarros {
         carros.frear();
         assertEquals(0,carros.getVelocidade());
        } 
-    /// teste
+    
+    @Test
+    public void testAcelerarAteVelocidadeMaxima() {
+       for (int i=0; i<14; i ++)
+          carros.acelerar();
+          assertEquals(100,carros.getVelocidade());
+       }
 }
