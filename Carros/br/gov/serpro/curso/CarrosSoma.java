@@ -1,9 +1,9 @@
 package br.gov.serpro.curso;
 
 public class CarrosSoma extends CarroDeCorrida{
-	private int potencia;
+	private double potencia;
 
-	public CarrosSoma(String nome, int potencia, int velocidadeMaxima) {
+	public CarrosSoma(String nome, double potencia, int velocidadeMaxima) {
 		super(nome, velocidadeMaxima);
 		this.potencia = potencia;
 	}
