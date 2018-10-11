@@ -1,6 +1,6 @@
 package br.com.serpro.heranca;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.ZoneId;
 
 public class DebitoAINL extends Debito {
 		
@@ -24,7 +24,7 @@ public class DebitoAINL extends Debito {
 	@Override
 	public double calcularSaldo(double valorBruto, double valorAlocado,  LocalDate dataVencimento) {
 				
-		LocalDate localdate1 = LocalDate().now();
+		LocalDate localdate1 = LocalDate.now(ZoneId.of("GMT+02:30"));
 					     				
 		if (localdate1.isAfter(dataVencimento) == true) {
 		    return (valorBruto - (valorAlocado * 2));
