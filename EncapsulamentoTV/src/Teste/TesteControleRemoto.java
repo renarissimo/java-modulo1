@@ -11,8 +11,8 @@ import serpro.TV;
 
 public class TesteControleRemoto {
 
-	private ControleRemoto cr1, cr2;
-	private TV tv1, tv2;
+	private ControleRemoto cr1, cr2, cr3;
+	private TV tv1, tv2, tv3;
 	
 	/*
 	 public boolean mudarCanal(int canal) {	
@@ -26,7 +26,9 @@ public class TesteControleRemoto {
 		tv1 = new TV(Arrays.asList(2,4,5,7,9,11,13));
 		cr1 = new ControleRemoto(tv1);
 		tv2 = new TV(Arrays.asList(2,4,5,7,9,11,13));
-		cr2 = new ControleRemoto(tv2);	
+		cr2 = new ControleRemoto(tv2);
+		tv3 = new TV(Arrays.asList(2,4,5,7,9,11,13));
+		cr3 = new ControleRemoto(tv3);	
 	}
 	
 	@Test
@@ -56,8 +58,17 @@ public class TesteControleRemoto {
 		cr2.aumentarVolume(); // 30
 		cr2.aumentarVolume(); // 40
 		cr2.aumentarVolume(); // 50
-		cr2.aumentarVolume(); // 60(50)				
+		cr2.aumentarVolume(); // 60(50)
 		assertEquals(50,tv2.getVolumeAtual());
+		assertEquals(true,status);		
+	}
+	
+	@Test
+	public void volumeNaoDeveSerInferiora0() {		
+		boolean status = cr3.ligarTV();
+		cr3.diminuirVolume(); //0		
+		cr3.diminuirVolume(); //-10(0)
+		assertEquals(0,tv2.getVolumeAtual());
 		assertEquals(true,status);		
 	}
 
