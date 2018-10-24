@@ -3,7 +3,7 @@ package serpro;
 import java.util.Arrays;
 import java.util.List;
 
-public class TV {
+public class TV implements Controlavel{
 
 	private int volumeMinimo = 0;
 	private int volumeMaximo = 50;
@@ -36,6 +36,7 @@ public class TV {
 	 * } }
 	 */
 
+	@Override
 	public boolean ligarDesligar(String acao) {
 		if (acao.equals("ligar")) {
 
@@ -83,4 +84,5 @@ public class TV {
 	public int getcanalAtivo() {
 		return canalAtivo;
 	}
+	
 }

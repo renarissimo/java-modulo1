@@ -2,12 +2,12 @@ package serpro;
 
 public class Jogadores implements Comparable<Jogadores> {
 
-	  String Nome;
+	  String nome;
 	  Integer gol;
 	  
 	 
 	  Jogadores(String Nome, int gol){
-		this.Nome = Nome;
+		this.nome = Nome;
 		this.gol = gol;		
 	  }
 				
@@ -18,4 +18,13 @@ public class Jogadores implements Comparable<Jogadores> {
 		 int last = this.gol.compareTo(jg.gol);  
 	     return last == 0 ? this.gol.compareTo(jg.gol) : last;
 	}
+	
+	protected String getNome() {
+		return nome;
+	}
+	
+	protected Integer getGol() {
+		return gol;
+	}
+
 	}

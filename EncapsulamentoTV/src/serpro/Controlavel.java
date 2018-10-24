@@ -1,6 +1,10 @@
 package serpro;
 
 public interface Controlavel {
-	void controlar();
+			
+	public boolean ligarDesligar(String acao);
+						
 	
 }
+
+

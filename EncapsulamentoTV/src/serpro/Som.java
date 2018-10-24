@@ -2,14 +2,29 @@ package serpro;
 
 public class Som implements Controlavel {
 
-	public Som() {
-		// TODO Auto-generated constructor stub
+	String acao;
+	
+	public Som(String acao) {
+		this.acao = acao;
+	}
+	
+			
+	public String getAcao (String acao) {
+		return acao;
 	}
 
 	@Override
-	public void controlar() {
-		// TODO Auto-generated method stub
+	public void ligar() {
+		System.out.println("Som ligado");
 		
 	}
 
+	@Override
+	public void desligar() {
+		System.out.println("Som desligado");
+		
+	}
+
+	
+	
 }

@@ -1,13 +1,21 @@
 package serpro;
-public class ControleRemoto {
+public class ControleRemoto{
 	
+	Controlavel ctr1;
 	TV tv1;
-	
-	
-	public ControleRemoto(TV tv1) {
+			
+	/*public ControleRemoto(TV tv1) {
 		super();
 		this.tv1 = tv1;
+	}*/
+	
+	public ControleRemoto(TV tv1, Controlavel ctr1) {
+	super();
+	this.tv1 = tv1;
+	this.ctr1 = ctr1;
 	}
+    		
+		
 
 	public boolean mudarCanal(int canal) {	
 		return tv1.verificarCanalAtivo(canal); 				
@@ -27,7 +35,7 @@ public class ControleRemoto {
     
     public void diminuirVolume () {
     	tv1.aumentarVolume();
-    }	
-       
+    }
+      
 
 }
