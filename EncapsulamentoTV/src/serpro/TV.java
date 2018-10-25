@@ -1,13 +1,11 @@
 package serpro;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class TV implements Controlavel{
+public class TV implements Controlavel, ControlavelSom{
 
 	private int volumeMinimo = 0;
 	private int volumeMaximo = 50;
-	// private List<Integer> canal = Arrays.asList(2,4,5,7,9,11,13);
 	private List<Integer> canal;
 	private boolean ligado = false;
 	private int canalAtivo;
@@ -54,6 +52,7 @@ public class TV implements Controlavel{
 	}
 	
 
+	@Override
 	public void diminuirVolume() {
 		volume -= 10;
 		if (volume > getVolumeMinimo()) {
@@ -65,7 +64,7 @@ public class TV implements Controlavel{
 		return volumeMinimo;
 	}
 	
-
+	@Override
 	public void aumentarVolume() {
 		volume += 10;
 		if (volume > getVolumeMaximo()) {

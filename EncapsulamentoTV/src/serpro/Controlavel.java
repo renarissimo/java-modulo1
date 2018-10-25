@@ -2,9 +2,8 @@ package serpro;
 
 public interface Controlavel {
 			
-	public boolean ligarDesligar(String acao);
-						
-	
+	public boolean ligarDesligar(String acao);		
+							
 }
 
 

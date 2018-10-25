@@ -3,6 +3,7 @@ package serpro;
 public class Tablet implements Controlavel{
 	
 	boolean ligado;
+	private int volume = 0;
 
 	public Tablet() {
 		// TODO Auto-generated constructor stub
@@ -23,5 +24,4 @@ public class Tablet implements Controlavel{
 		}
 	}
 		
-	
 }	

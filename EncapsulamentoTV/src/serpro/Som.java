@@ -1,30 +1,57 @@
 package serpro;
 
-public class Som implements Controlavel {
+import java.util.List;
 
-	String acao;
+public class Som implements Controlavel, ControlavelSom {
 	
-	public Som(String acao) {
-		this.acao = acao;
-	}
+	private int volumeMinimo = 0;
+	private int volumeMaximo = 100;
+	private List<Double> estacoes;
+	private boolean ligado = false;
+	private double estacaoAtual;
+	private int volume = 0;
 	
-			
-	public String getAcao (String acao) {
-		return acao;
+	
+
+	@Override
+	public boolean ligarDesligar(String acao) {
+		if (acao.equals("ligar")) {
+
+			if (ligado == false) {
+				ligado = true;
+				estacaoAtual = estacoes.get(0); // Primeira posição da lista.
+				volume = 10;
+			} else {
+				ligado = false;
+			}
+			return ligado;
+		} else {
+			return ligado;
+		}
 	}
 
 	@Override
-	public void ligar() {
-		System.out.println("Som ligado");
-		
+	public void diminuirVolume() {
+		volume -= 10;
+		if (volume > getVolumeMinimo()) {
+			volume = 0;			
+		}		
 	}
-
-	@Override
-	public void desligar() {
-		System.out.println("Som desligado");
-		
-	}
-
 	
+	private int getVolumeMinimo() {
+		return volumeMinimo;
+	}
+	
+	@Override
+	public void aumentarVolume() {
+		volume += 10;
+		if (volume > getVolumeMaximo()) {
+			volume = 100;			
+		}		
+	}
+
+	private int getVolumeMaximo() {
+		return volumeMaximo;
+	}
 	
 }
