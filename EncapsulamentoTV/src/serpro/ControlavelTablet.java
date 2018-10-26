@@ -1,5 +1,8 @@
 package serpro;
 
-public interface ControlavelTablet {
+public interface ControlavelTablet extends Controlavel{
+	
+public boolean navegarAplicativo(String app);
 
+	
 }

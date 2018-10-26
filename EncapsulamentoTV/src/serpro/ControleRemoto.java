@@ -1,32 +1,27 @@
 package serpro;
 public class ControleRemoto implements ControlavelSom{
-		
-	TV tv1;
 			
-	/*public ControleRemoto(TV tv1) {
-		super();
-		this.tv1 = tv1;
-	}*/
-	
-	public ControleRemoto(TV tv1) {
+	ControlavelSom ctrs1;
+				
+	public ControleRemoto(ControlavelSom ctrs1) {
 	super();
-	this.tv1 = tv1;	
+	this.ctrs1 = ctrs1;	
 	}
     		
 	@Override
 	public boolean ligarDesligar(String acao) {
-		return tv1.ligarDesligar(acao);
+		return ctrs1.ligarDesligar(acao);
 	}
 
 
     @Override
     public void diminuirVolume() {
-	     tv1.diminuirVolume();
+    	 ctrs1.diminuirVolume();	     
     }
 
 
     @Override
-    public void aumentarVolume() {
-    	tv1.aumentarVolume();	
+    public void aumentarVolume() {    	
+    	ctrs1.aumentarVolume();
     }     
 }

@@ -1,12 +1,15 @@
 package serpro;
 
-public class Tablet implements Controlavel{
-	
-	boolean ligado;
-	private int volume = 0;
+import java.util.List;
 
-	public Tablet() {
-		// TODO Auto-generated constructor stub
+public class Tablet implements ControlavelTablet{
+	
+	private List<String> aplicativo;		
+	boolean ligado;	
+
+	public Tablet() {		
+			super();
+			this.aplicativo = aplicativo;		
 	}
 		
 	@Override
@@ -23,5 +26,16 @@ public class Tablet implements Controlavel{
 			return ligado;
 		}
 	}
-		
-}	
+
+	@Override	
+	public boolean navegarAplicativo(String app)	 {
+
+			for (int x = 0; x < aplicativo.size(); x++) {
+				if (aplicativo.get(x).equals(app)) {					
+					return true;
+				}
+			}
+			return false;
+		}	
+				
+	}
