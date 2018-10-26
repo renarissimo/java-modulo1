@@ -1,5 +1,5 @@
 package serpro;
-public class ControleRemoto{
+public class ControleRemoto implements Controlavel{
 	
 	Controlavel ctr1;
 	TV tv1;
@@ -36,6 +36,7 @@ public class ControleRemoto{
     public void diminuirVolume () {
     	tv1.aumentarVolume();
     }
+
       
 
 }

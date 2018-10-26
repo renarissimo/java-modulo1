@@ -1,6 +1,6 @@
 package serpro;
 
-public interface ControlavelSom {
+public interface ControlavelSom extends Controlavel{
 	
     public void diminuirVolume();
 	

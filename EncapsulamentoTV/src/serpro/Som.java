@@ -2,7 +2,7 @@ package serpro;
 
 import java.util.List;
 
-public class Som implements Controlavel, ControlavelSom {
+public class Som implements ControlavelSom {
 	
 	private int volumeMinimo = 0;
 	private int volumeMaximo = 100;
