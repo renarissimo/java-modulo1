@@ -18,7 +18,8 @@ public class teste {
 	@Before
 	public void before() {
 		
-		Renato = new Pessoa('1983-08-12');	
+		//Renato = new Pessoa('1983-08-12');	
+		Renato = new Pessoa('1983-08-12');
 		
 	}
 
