@@ -13,7 +13,7 @@ public class Pessoa {
 		this.dataDeNascimento = dataDeNascimento;		
 	}
 	   
-    
+    /*
     boolean isMesMaior = dataDeNascimento.getMonthValue() >= now.getMonthValue();
     
     boolean isMesmoMesDiaMaior = dataDeNascimento.getMonthValue() >= now.getMonthValue()
@@ -26,7 +26,7 @@ public class Pessoa {
     	}    		
          return ((now.getYear() - dataDeNascimento.getYear()) - y);
     }            
-	
+	*/
  
     public String getSigno() {    	
     	if (dataDeNascimento.getMonthValue() == 3) {
@@ -35,7 +35,22 @@ public class Pessoa {
     		}else {
     			return("Peixes");
     		} 
+    	}else if(dataDeNascimento.getMonthValue() == 4){
+    		if (dataDeNascimento.getDayOfMonth() >= 21) {
+    			return ("Touro");
+    		}else {
+    			return("Aries");
+    		} 
+    	}else if(dataDeNascimento.getMonthValue() == 5){
+    		if (dataDeNascimento.getDayOfMonth() >= 21) {
+    			return ("Gêmeos");
+    		}else {
+    			return("Touro");
+    		}
     	}
+    	else
+    		return("Outros");
+    }
     	/*if (dataDeNascimento.isAfter("03-21") & dataDeNascimento.isBefore("04-20")) {
 	    	return ("Aries");
 	    } else if 

@@ -1,18 +1,12 @@
 package serpro;
 
-public class Autoridade implements FormatadorNome {
+public class Autoridade {
 	String nome;
 	String sobrenome;
+	FormatadorNome fn;
 	
 	public String getTratamento() {
-		
+		return fn.formatarNome(nome, sobrenome);
 	}
-	@Override
-	public String formatarNome(String nome, String sobrenome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 
 }
