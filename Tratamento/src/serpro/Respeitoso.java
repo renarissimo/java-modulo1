@@ -1,14 +1,9 @@
 package serpro;
 
 public class Respeitoso implements FormatadorNome{
-	String nome;
-	String sobrenome;
 	String sexo;
 	
-	public Respeitoso(String nome, String sobrenome, String sexo) {
-		super();
-		this.nome = nome;
-		this.sobrenome = sobrenome;
+	public Respeitoso(String sexo) {		
 		this.sexo = sexo;
 	}
 
@@ -19,9 +14,9 @@ public class Respeitoso implements FormatadorNome{
 	@Override
 	public String formatarNome(String nome, String sobrenome) {
 		if (sexo == "M") {
-			return("Sr " + nome + sobrenome);	
+			return("Sr " + sobrenome);	
 		}else if (sexo == "F") {
-			return("Sra " + nome + sobrenome);
+			return("Sra " + sobrenome);
 	}else
 		return ("Indefinido");
 	}
