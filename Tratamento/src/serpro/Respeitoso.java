@@ -17,7 +17,7 @@ public class Respeitoso implements FormatadorNome{
 			return("Sr " + sobrenome);	
 		}else if (sexo == "F") {
 			return("Sra " + sobrenome);
-	}else
-		return ("Indefinido");
+	    }else
+		    return ("Sexo Incorreto");
 	}
-}	
+}
