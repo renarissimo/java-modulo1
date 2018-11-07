@@ -12,7 +12,7 @@ public class Principal {
 		Autoridade aut1 = new Autoridade("Renato","Verissimo",ct1);
 		
 		Respeitoso ct2 = new Respeitoso("M");
-		Autoridade aut2 = new Autoridade("José","Verissimo",ct2);
+		Autoridade aut2 = new Autoridade("Jose","Verissimo",ct2);
 		
 		System.out.println("Aut 1 = " + aut1.getTratamento());
 		System.out.println("Aut 2 = " + aut2.getTratamento());

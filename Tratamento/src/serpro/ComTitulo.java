@@ -16,6 +16,6 @@ public class ComTitulo implements FormatadorNome {
 				.append(nome)
 				.append(" ")
 				.append(sobrenome);
-		return(retorno.toString()); // Retornar tudo em um Ãºnico espaÃ§o de memÃ³ria.
+		return(retorno.toString()); // Retornar tudo em um único espaço de memória.
 	}	
 }
