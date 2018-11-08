@@ -2,7 +2,7 @@ package br.gov.serpro.conta;
 
 public class ContaCorrenteRegular implements ContaCorrente{
 
-	private Double saldo = 0.0;
+	private double saldo = 0.0;
 	private static final Double TAXADEJUROS = 5.0;
 
 
@@ -21,4 +21,16 @@ public class ContaCorrenteRegular implements ContaCorrente{
 		return TAXADEJUROS;
 	}
 
+	@Override
+	public void efetuarRetirada(double valorRetirada) throws Exception {
+		
+		if (saldo >= valorRetirada) {
+			
+			saldo -= valorRetirada;
+		}else {	
+			
+			throw new SaldoInsuficienteException();
+		}
+	}		
+						
 }

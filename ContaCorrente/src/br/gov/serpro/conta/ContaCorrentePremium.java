@@ -22,4 +22,15 @@ public class ContaCorrentePremium implements ContaCorrente{
 		return TAXADEJUROS;
 	}
 
+	@Override
+	public void efetuarRetirada(double valorRetirada) throws Exception{
+		
+			if (saldo >= valorRetirada) {
+				
+				saldo -= valorRetirada;
+			}else {	
+				
+				throw new SaldoInsuficienteException();
+			}
+		}			
 }
