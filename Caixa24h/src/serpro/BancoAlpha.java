@@ -3,7 +3,7 @@ package serpro;
 import java.util.ArrayList;
 import java.util.List;
 
-import serpro.SaldoInsuficiente;
+import serpro.SaldoInsuficienteException;
 
 public class BancoAlpha implements Operacoes {
 
@@ -13,13 +13,16 @@ public class BancoAlpha implements Operacoes {
 	private static final Double Limite = -850.00;
 	List<Operacoes_Correntes> Operacoes = new ArrayList<Operacoes_Correntes>();
 
-	/*
-	public BancoAlpha(double Saque, double Deposito) {
+	private int banco;
+	private String agencia;
+	
+
+	public BancoAlpha(int banco, String agencia) {
 		super();
-		this.Saque = Saque;
-		this.Deposito = Deposito;
+		this.banco = banco;
+		this.agencia = agencia;
 	}
-*/
+
 	@Override
 	public void realizarDeposito(double valorDeposito) {
 		Saldo += valorDeposito;
@@ -27,11 +30,11 @@ public class BancoAlpha implements Operacoes {
 	}
 
 	@Override
-	public void realizarSaque(double valorSaque) throws SaldoInsuficiente {
+	public void realizarSaque(double valorSaque) throws SaldoInsuficienteException {		
 		if ((Saldo -= valorSaque) >= Limite) {
 			Saldo -= valorSaque;
 		} else {
-			throw new SaldoInsuficiente();
+			throw new SaldoInsuficienteException();
 		}
 	}
 
@@ -47,8 +50,12 @@ public class BancoAlpha implements Operacoes {
 	}
 
 	@Override
-	public void realizarTransferencia(double valorTransferencia) {
-		// TODO Auto-generated method stub
+	public void realizarTransferencia(int banco, String agencia, double valorTransferencia) throws BancoDiferenteException {
+		/*if ((Saldo -= valorSaque) >= Limite) {
+			Saldo -= valorSaque;
+		} else {*/
+			throw new BancoDiferenteException();
+		/*}*/
 
 	}
 	

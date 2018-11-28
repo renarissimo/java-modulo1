@@ -3,6 +3,16 @@ package serpro;
 import java.util.List;
 
 public class BancoBeta implements Operacoes {
+	
+	private int banco;
+	private String agencia;
+	
+		
+	public BancoBeta(int banco, String agencia) {
+		super();
+		this.banco = banco;
+		this.agencia = agencia;
+	}
 
 	@Override
 	public List consultarExtrato() {
@@ -17,7 +27,8 @@ public class BancoBeta implements Operacoes {
 	}
 
 	@Override
-	public void realizarTransferencia(double valorTransferencia) {
+	public void realizarTransferencia(int banco, String agencia, double valorTransferencia)
+			throws BancoDiferenteException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,10 +40,12 @@ public class BancoBeta implements Operacoes {
 	}
 
 	@Override
-	public void realizarSaque(double valorSaque) {
+	public void realizarSaque(double valorSaque) throws SaldoInsuficienteException {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 	
 
