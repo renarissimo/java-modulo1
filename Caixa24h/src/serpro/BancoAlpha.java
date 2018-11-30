@@ -4,38 +4,36 @@ package serpro;
 import java.util.List;
 
 public class BancoAlpha implements Banco {
+	
+	Operacao operacao;
 
-	private String agencia;
-	private int conta;
-	
-	
-	public BancoAlpha(String agencia, int banco) {
+	public BancoAlpha(Operacao operacao) {
 		super();
-		this.agencia = agencia;
-		this.conta = banco;
+		this.operacao = operacao;
 	}
+
 	@Override	
-	public List consultarExtrato() {
+	public List consultarExtrato(Operacao operacao) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
-	public Double obterSaldo() {
+	public Double obterSaldo(Operacao operacao) {
 		// TODO Auto-generated method stub
 		return 0.0;
 	}
 	@Override
-	public void realizarTransferencia(int banco, String agencia, double valorTransferencia){
+	public void realizarTransferencia(Transferencia transferencia){
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void realizarDeposito(double valorDeposito) {
+	public void realizarDeposito(Operacao operacao, double valorDeposito) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void realizarSaque(double valorSaque){
+	public void realizarSaque(Operacao operacao, double valorSaque){
 		// TODO Auto-generated method stub
 		
 	}

@@ -5,18 +5,18 @@ import java.util.List;
 public interface Banco {
 			
 	//Consultar extrato	
-	List consultarExtrato(); 		
+	List consultarExtrato(Operacao operacao); 		
 	
 	//Consultar Saldo
-	Double obterSaldo();	
+	Double obterSaldo(Operacao operacao);	
 	
 	//Realizar Transferência (no mesmo banco)
-	void realizarTransferencia(int banco, String  agencia, double valorTransferencia);
+	void realizarTransferencia(Transferencia transferencia);
 	
 	//Realizar Depósito
-	void realizarDeposito(double valorDeposito);
+	void realizarDeposito(Operacao operacao, double valorDeposito);
 	
 	//Saque
-	void realizarSaque(double valorSaque);
+	void realizarSaque(Operacao operacao, double valorSaque);
 
 }

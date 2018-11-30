@@ -8,81 +8,81 @@ import org.junit.Test;
 import serpro.BancoAlpha;
 import serpro.BancoBeta;
 import serpro.Caixa24h;
+import serpro.Transferencia;
 
 
 public class TesteCaixa24h {
 	
-	private BancoAlpha a1,  a2;
-	private BancoBeta b1,  b2;
-
+	private BancoAlpha a1;
+	private BancoBeta b1;
+    private Caixa24h caixaA, caixaB;
+    private Transferencia transferenciaA, transferenciaB;
+    
 	@Before
 	public void before() {
-			
-		a1 = new BancoAlpha("1-1234",1);		
-		a2 = new BancoAlpha("1-5678",1);		
-		b1 = new BancoBeta("2-1234",1);		
-		b2 = new BancoBeta("2-5678",1);		
+	// instanciar o caixa24h			
+		a1 = new BancoAlpha("1-12345",1111);
+		b1 = new BancoBeta("2-12345",2222);						
+		caixaA = new Caixa24h(a1);
+		caixaB = new Caixa24h(b1);
+		transferenciaA = new Transferencia("1-12345",1111,"1,67890",2222,0.00);
+		transferenciaB = new Transferencia("2-12345",2222,"2,67890",3333,0.00);
 					
 	}
 	
 	@Test
     public void testRealizarDepositoBancoAlpha() {
 		double saldoAtual = 0;
-		saldoAtual = a1.obterSaldo();
-		a1.realizarDeposito(0.00);
-		assertEquals((0.00 + saldoAtual),a1.obterSaldo(),0.01);	//
-		saldoAtual = a2.obterSaldo();
-		a2.realizarDeposito(0.00);
-		assertEquals((0.00 + saldoAtual),a2.obterSaldo(),0.01);	//		
+		saldoAtual = caixaA.obterSaldo();
+		caixaA.realizarDeposito(0.00);
+		assertEquals((0.00 + saldoAtual),caixaA.obterSaldo(),0.01);	//
+		saldoAtual = caixaA.obterSaldo();
+		caixaA.realizarDeposito(0.00);
+		assertEquals((0.00 + saldoAtual),caixaA.obterSaldo(),0.01);	//		
     }		
 
 	
 	@Test
-    public void testRealizarSaqueBancoAlphaUm() {
-		a1.realizarSaque(0.00);		
-		assertEquals(0.00,a2.obterSaldo(),0.01);
+    public void testRealizarSaqueBancoAlpha() {
+		caixaA.realizarSaque(0.00);		
+		assertEquals(0.00,caixaA.obterSaldo(),0.01);
 		
     }
+	
 	
 	
 	@Test
     public void testEmitirExtratoBancoAlpha() {
-		a1.consultarExtrato();
-		assertEquals(0.00,a1.obterSaldo(),0.01);	//
-		a2.consultarExtrato();
-		assertEquals(0.00,a2.obterSaldo(),0.01);	//
+		caixaA.consultarExtrato();
+		assertEquals(0.00,caixaA.obterSaldo(),0.01);	//
     }
 		
 	
 	@Test
-    public void testRealizarSaqueBancoAlphaDois() {		
-		a1.realizarSaque(0.00);		
-		assertEquals(0.00,a1.obterSaldo(),0.01);	//
+    public void testRealizarSaqueBancoBeta() {		
+		caixaB.realizarSaque(0.00);		
+		assertEquals(0.00,caixaB.obterSaldo(),0.01);	//
     }
 	
 	
 	@Test
 	public void testRealizarTransferenciaBancoAlpha(){
-		a1.realizarTransferencia(1, "1-5678", 0.00);
-		assertEquals(0.00,a1.obterSaldo(),0.01);		
-		assertEquals(0.00,a2.obterSaldo(),0.01);		
+		caixaA.realizarTransferencia(transferenciaA);
+		assertEquals(0.00,caixaA.obterSaldo(),0.01);						
 	}
 	
 	
 	@Test
     public void testRealizarDepositoBancoBeta() {      
-		b1.realizarDeposito(0.00);
-		assertEquals(0.00,b1.obterSaldo(),0.01);	//
-		b2.realizarDeposito(1000.00);
-		assertEquals(0.00,b1.obterSaldo(),0.01);	//		
+		caixaB.realizarDeposito(0.00);
+		assertEquals(0.00,caixaB.obterSaldo(),0.01);	//			
     }
 		
     
 	@Test
 	public void testRealizarTransferenciaBancoBeta(){
-		b1.realizarTransferencia(2, "2-5678", 500.00);
-		assertEquals(0.00,b1.obterSaldo(),0.01);		
-		assertEquals(0.00,b2.obterSaldo(),0.01);		
+		caixaB.realizarTransferencia(transferenciaB);
+		assertEquals(0.00,caixaB.obterSaldo(),0.01);
 	}
 	
 								   
