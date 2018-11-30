@@ -1,66 +1,43 @@
 package serpro;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-import serpro.SaldoInsuficienteException;
+public class BancoAlpha implements Banco {
 
-public class BancoAlpha implements Operacoes {
-
-	private double Saque = 0.0;
-	private double Deposito = 0.0;
-	private double Saldo = 0.0;
-	private static final Double Limite = -850.00;
-	List<Operacoes_Correntes> Operacoes = new ArrayList<Operacoes_Correntes>();
-
-	private int banco;
 	private String agencia;
+	private int conta;
 	
-
-	public BancoAlpha(int banco, String agencia) {
+	
+	public BancoAlpha(String agencia, int banco) {
 		super();
-		this.banco = banco;
 		this.agencia = agencia;
+		this.conta = banco;
 	}
-
-	@Override
-	public void realizarDeposito(double valorDeposito) {
-		Saldo += valorDeposito;
-		//Operacoes.add("Depósito no valor de: ", getValorDeposito());
-	}
-
-	@Override
-	public void realizarSaque(double valorSaque) throws SaldoInsuficienteException {		
-		if ((Saldo -= valorSaque) >= Limite) {
-			Saldo -= valorSaque;
-		} else {
-			throw new SaldoInsuficienteException();
-		}
-	}
-
-	@Override
+	@Override	
 	public List consultarExtrato() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public Double obterSaldo() {
-		return Saldo;
+		// TODO Auto-generated method stub
+		return 0.0;
 	}
-
 	@Override
-	public void realizarTransferencia(int banco, String agencia, double valorTransferencia) throws BancoDiferenteException {
-		/*if ((Saldo -= valorSaque) >= Limite) {
-			Saldo -= valorSaque;
-		} else {*/
-			throw new BancoDiferenteException();
-		/*}*/
-
+	public void realizarTransferencia(int banco, String agencia, double valorTransferencia){
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void realizarDeposito(double valorDeposito) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void realizarSaque(double valorSaque){
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public double getValorDeposito() {
-   	 return Deposito;
-   	 }
-
 }

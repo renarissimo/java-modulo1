@@ -2,7 +2,7 @@ package serpro;
 
 import java.util.List;
 
-public interface Operacoes {
+public interface Banco {
 			
 	//Consultar extrato	
 	List consultarExtrato(); 		
@@ -11,12 +11,12 @@ public interface Operacoes {
 	Double obterSaldo();	
 	
 	//Realizar Transferência (no mesmo banco)
-	void realizarTransferencia(int banco, String  agencia, double valorTransferencia) throws BancoDiferenteException;
+	void realizarTransferencia(int banco, String  agencia, double valorTransferencia);
 	
 	//Realizar Depósito
 	void realizarDeposito(double valorDeposito);
 	
 	//Saque
-	void realizarSaque(double valorSaque) throws SaldoInsuficienteException;
+	void realizarSaque(double valorSaque);
 
 }

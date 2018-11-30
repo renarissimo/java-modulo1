@@ -2,9 +2,9 @@ package serpro;
 
 public class Caixa24h {
 
-	Operacoes banco;
+	Banco banco;
 
-	public Caixa24h(Operacoes banco) {
+	public Caixa24h(Banco banco) {
 		super();
 		this.banco = banco;
 	}
