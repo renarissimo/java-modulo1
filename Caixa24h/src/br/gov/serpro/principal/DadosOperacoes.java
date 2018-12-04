@@ -1,4 +1,4 @@
-package serpro;
+package br.gov.serpro.principal;
 
 import java.math.BigDecimal;
 

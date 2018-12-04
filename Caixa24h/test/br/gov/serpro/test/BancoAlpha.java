@@ -1,12 +1,12 @@
-package test;
+package br.gov.serpro.test;
 
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import serpro.Banco;
-import serpro.ContaCorrente;
-import serpro.DadosTransferencia;
+import br.gov.serpro.principal.Banco;
+import br.gov.serpro.principal.ContaCorrente;
+import br.gov.serpro.principal.DadosTransferencia;
 
 public class BancoAlpha implements Banco {
 		

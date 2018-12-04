@@ -1,13 +1,13 @@
-package caixa24h;
+package br.gov.serpro.caixa24h;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import serpro.Banco;
-import serpro.ContaCorrente;
-import serpro.DadosOperacoes;
-import serpro.DadosTransferencia;
-import serpro.ExcpetionSaldoInsuficiente;
+import br.gov.serpro.principal.Banco;
+import br.gov.serpro.principal.ContaCorrente;
+import br.gov.serpro.principal.DadosOperacoes;
+import br.gov.serpro.principal.DadosTransferencia;
+import br.gov.serpro.principal.ExcpetionSaldoInsuficiente;
 
 public class Caixa24h {
 

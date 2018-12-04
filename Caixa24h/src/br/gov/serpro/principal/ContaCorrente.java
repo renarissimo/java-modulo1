@@ -1,4 +1,4 @@
-package serpro;
+package br.gov.serpro.principal;
 
 public class ContaCorrente {
 	final private String agencia;

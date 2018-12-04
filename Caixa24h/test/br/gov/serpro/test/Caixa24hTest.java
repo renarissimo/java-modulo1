@@ -1,13 +1,13 @@
-package test;
+package br.gov.serpro.test;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import caixa24h.Caixa24h;
-import serpro.ContaCorrente;
-import serpro.DadosTransferencia;
+import br.gov.serpro.caixa24h.Caixa24h;
+import br.gov.serpro.principal.ContaCorrente;
+import br.gov.serpro.principal.DadosTransferencia;
 
 
 public class Caixa24hTest {
