@@ -1,22 +1,43 @@
 package serpro;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface Banco {
 			
-	//Consultar extrato	
-	List consultarExtrato(Operacao operacao); 		
+	/**
+	 * Consultar Extrato	
+	 * @param operacao
+	 * @return
+	 */
+	List<DadosOperacoes> consultarExtrato(ContaCorrente operacao); 		
 	
-	//Consultar Saldo
-	Double obterSaldo(Operacao operacao);	
+	/**
+	 * Obter Saldo
+	 * @param operacao
+	 * @return
+	 */
+	Double obterSaldo(ContaCorrente operacao);
 	
-	//Realizar Transferência (no mesmo banco)
-	void realizarTransferencia(Transferencia transferencia);
+	/**
+	 * Realizar TransferÃªncia
+	 * @param transferencia
+	 */
+		
+	void realizarTransferencia(DadosTransferencia transferencia);
 	
-	//Realizar Depósito
-	void realizarDeposito(Operacao operacao, double valorDeposito);
+	/***
+	 * Realizar DepÃ³stito
+	 * @param operacao
+	 * @param valorDeposito
+	 */
+	void realizarDeposito(ContaCorrente operacao, BigDecimal valorDeposito);
 	
-	//Saque
-	void realizarSaque(Operacao operacao, double valorSaque);
+	/**
+	 * Realizar Saque
+	 * @param operacao
+	 * @param BigDecimal
+	 */
+	void realizarSaque(ContaCorrente operacao, BigDecimal valorSaque) throws ExcpetionSaldoInsuficiente;
 
 }
