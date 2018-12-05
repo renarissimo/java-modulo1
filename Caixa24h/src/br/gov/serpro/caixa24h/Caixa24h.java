@@ -13,10 +13,16 @@ public class Caixa24h {
 
 	private Banco banco;
     
-	public Caixa24h(Banco banco) {
-		super();
-		this.banco = banco;
+	public Caixa24h(Banco banco) {		
+		if (banco == null) {
+			throw new IllegalArgumentException("Não é possível operar um banco 24h sem um banco existente.");
+		}
+		this.banco = banco;		
 	}
+	
+	/**
+	 teste 
+	 */	 
 
 	/**
 	 * Consultar Extrato	
