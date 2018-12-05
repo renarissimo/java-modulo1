@@ -20,9 +20,6 @@ public class Caixa24h {
 		this.banco = banco;		
 	}
 	
-	/**
-	 teste 
-	 */	 
 
 	/**
 	 * Consultar Extrato	
