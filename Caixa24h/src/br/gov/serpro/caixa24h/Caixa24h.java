@@ -5,9 +5,9 @@ import java.util.List;
 
 import br.gov.serpro.principal.Banco;
 import br.gov.serpro.principal.ContaCorrente;
-import br.gov.serpro.principal.DadosOperacoes;
-import br.gov.serpro.principal.DadosTransferencia;
-import br.gov.serpro.principal.ExcpetionSaldoInsuficiente;
+import br.gov.serpro.principal.Operacao;
+import br.gov.serpro.principal.Transferencia;
+import br.gov.serpro.principal.SaldoInsuficienteExcpetion;
 
 public class Caixa24h {
 
@@ -23,8 +23,8 @@ public class Caixa24h {
 	 * @param operacao
 	 * @return
 	 */
-	public List<DadosOperacoes> consultarExtrato(ContaCorrente operacao) {
-		return banco.consultarExtrato(operacao);
+	public List<Operacao> consultarExtrato(ContaCorrente contaCorrente) {
+		return banco.consultarExtrato(contaCorrente);
 	}
 
 	/**
@@ -32,8 +32,8 @@ public class Caixa24h {
 	 * @param operacao
 	 * @return
 	 */
-	public Double obterSaldo(ContaCorrente operacao) {
-		return banco.obterSaldo(operacao);
+	public Double obterSaldo(ContaCorrente contaCorrente) {
+		return banco.obterSaldo(contaCorrente);
 	}
 
 	/**
@@ -41,8 +41,8 @@ public class Caixa24h {
 	 * @param operacao
 	 * @return
 	 */
-	public void realizarTransferencia(DadosTransferencia transferencia) {
-		banco.realizarTransferencia(transferencia);
+	public void realizarTransferencia(Transferencia transferencia) throws SaldoInsuficienteExcpetion {		
+			banco.realizarTransferencia(transferencia);		
 	}
 
 	/**
@@ -59,13 +59,8 @@ public class Caixa24h {
 	 * @param operacao
 	 * @return
 	 */
-	public void realizarSaque(ContaCorrente operacao, BigDecimal valorSaque) {
-		try {
-			banco.realizarSaque(operacao, valorSaque);
-		} catch (ExcpetionSaldoInsuficiente e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void realizarSaque(ContaCorrente operacao, BigDecimal valorSaque) throws SaldoInsuficienteExcpetion{
+			banco.realizarSaque(operacao, valorSaque);	
 	}
 
 }

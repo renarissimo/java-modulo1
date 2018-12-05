@@ -1,6 +1,6 @@
 package br.gov.serpro.principal;
 
-public class ContaCorrente {
+public abstract class ContaCorrente {
 	final private String agencia;
 	final private int conta;
 	
@@ -17,6 +17,11 @@ public class ContaCorrente {
 	public int getConta() {
 		return conta;
 	}
+	
+
+	public abstract void getLimite();
+	
+	public abstract void getSaldo();
 	
 	
 	

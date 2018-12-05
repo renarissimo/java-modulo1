@@ -1,13 +1,13 @@
 package br.gov.serpro.principal;
 
-public class DadosTransferencia {
+public class Transferencia {
 	
 	
 	final private ContaCorrente contaCorrenteOrigem;
 	final private ContaCorrente contaCorrenteDestino;		
 	final private double ValorTransferencia;
 	
-	public DadosTransferencia(ContaCorrente contaCorrenteOrigem, ContaCorrente contaCorrenteDestino,
+	public Transferencia(ContaCorrente contaCorrenteOrigem, ContaCorrente contaCorrenteDestino,
 			double valorTransferencia) {
 		super();
 		this.contaCorrenteOrigem = contaCorrenteOrigem;

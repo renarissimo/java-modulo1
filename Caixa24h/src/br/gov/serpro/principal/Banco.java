@@ -10,7 +10,7 @@ public interface Banco {
 	 * @param operacao
 	 * @return
 	 */
-	List<DadosOperacoes> consultarExtrato(ContaCorrente operacao); 		
+	List<Operacao> consultarExtrato(ContaCorrente operacao); 		
 	
 	/**
 	 * Obter Saldo
@@ -24,7 +24,7 @@ public interface Banco {
 	 * @param transferencia
 	 */
 		
-	void realizarTransferencia(DadosTransferencia transferencia);
+	void realizarTransferencia(Transferencia transferencia)throws SaldoInsuficienteExcpetion;
 	
 	/***
 	 * Realizar Depóstito
@@ -38,6 +38,6 @@ public interface Banco {
 	 * @param operacao
 	 * @param BigDecimal
 	 */
-	void realizarSaque(ContaCorrente operacao, BigDecimal valorSaque) throws ExcpetionSaldoInsuficiente;
+	void realizarSaque(ContaCorrente operacao, BigDecimal valorSaque) throws SaldoInsuficienteExcpetion;
 
 }
