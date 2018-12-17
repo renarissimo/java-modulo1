@@ -59,7 +59,8 @@ public abstract class Conta {
      *            deverá ser positivo para creditos na conta e negativos para
      *            débitos na conta.
      */
-    protected void registrarLancamento(Lancamento lancamento) {
+    //alterado de protect para public
+    public void registrarLancamento(Lancamento lancamento) {        
         saldo = saldo.add(lancamento.valor);
         lancamentos.add(lancamento);
     }
@@ -74,5 +75,5 @@ public abstract class Conta {
      */
     protected abstract List<Lancamento> consultaLancamento(
             LocalDate dataInicial, LocalDate dataFinal);
-
+      
 }

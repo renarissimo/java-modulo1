@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import br.gov.serpro.exception.OperacaoInvalidaException;
 import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 
@@ -44,8 +45,9 @@ public abstract class Banco {
      * 
      * @param valor
      * @param conta
+     * @throws OperacaoInvalidaException 
      */
-    public abstract void depositar(BigDecimal valor, Conta conta);
+    public abstract void depositar(BigDecimal valor, Conta conta) throws OperacaoInvalidaException;
 
     /**
      * M�todo que deve consultar o saldo em uma conta
