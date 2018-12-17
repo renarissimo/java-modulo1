@@ -11,6 +11,8 @@ import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 
 public class BancoAlfa extends Banco{
+		 
+	  final BigDecimal limite = new BigDecimal(1000.00);
 
 	public BancoAlfa(String nome, Long numero) {
 		super(nome, numero);
@@ -19,8 +21,17 @@ public class BancoAlfa extends Banco{
 
 	@Override
 	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException {
-		// TODO Auto-generated method stub
-		
+		BigDecimal saldoAtual = conta.getSaldo();
+		BigDecimal saldoPosterior = saldoAtual.subtract(valor).ZERO;
+		 if (saldoPosterior.subtract(valor).compareTo(limite) == -1) {		
+			throw new SaldoInsuficienteException();
+		}else {
+			saldoAtual = saldoPosterior;
+			/*
+			 Está faltando um método para atualização do saldo da conta. 
+			 */
+
+		}
 	}
 
 	@Override
@@ -31,8 +42,8 @@ public class BancoAlfa extends Banco{
 
 	@Override
 	public BigDecimal consultarSaldo(Conta conta) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return conta.getSaldo();
 	}
 
 	@Override
@@ -43,8 +54,8 @@ public class BancoAlfa extends Banco{
 
 	@Override
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
-			throws TransferenciaInvalidaException {
-		// TODO Auto-generated method stub
+			throws TransferenciaInvalidaException,SaldoInsuficienteException {
+		   
 		
 	}
 }	
