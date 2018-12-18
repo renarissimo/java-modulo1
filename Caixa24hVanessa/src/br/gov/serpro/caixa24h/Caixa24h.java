@@ -7,6 +7,7 @@ import java.util.List;
 import br.gov.serpro.banco.Banco;
 import br.gov.serpro.banco.Conta;
 import br.gov.serpro.banco.Lancamento;
+import br.gov.serpro.exception.OperacaoInvalidaException;
 import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 
@@ -30,7 +31,12 @@ public class Caixa24h {
     }
 
     public void depositar(BigDecimal valor, Conta conta) {
-        banco.depositar(valor, conta);
+        try {
+			banco.depositar(valor, conta);
+		} catch (OperacaoInvalidaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public BigDecimal consultarSaldo(Conta conta) {

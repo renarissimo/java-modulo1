@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.gov.serpro.banco.Conta;
 import br.gov.serpro.banco.Lancamento;
+import br.gov.serpro.exception.OperacaoInvalidaException;
 
 public class ContaMock extends Conta {
 
@@ -14,29 +15,24 @@ public class ContaMock extends Conta {
 
     }
 
-    @Override
-    public BigDecimal getSaldo() {
-        return super.getSaldo();
-    }
+	@Override
+	public BigDecimal getLimite() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public BigDecimal getLimite() {
-        return null;
-    }
+	@Override
+	public List<Lancamento> consultaLancamento(LocalDate dataInicial, LocalDate dataFinal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public String getIdConta() {
-        return null;
-    }
+	@Override
+	public int verificarQuantidade(Conta conta, LocalDate date) throws OperacaoInvalidaException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-    public void registrarLancamento(Lancamento lancamento) {
-        super.registrarLancamento(lancamento);
-    }
-
-    @Override
-    protected List<Lancamento> consultaLancamento(LocalDate dataInicial,
-            LocalDate dataFinal) {
-        return null;
-    }
+   
 
 }

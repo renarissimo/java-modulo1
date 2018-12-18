@@ -5,9 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.gov.serpro.exception.OperacaoInvalidaException;
+
 /**
- * Classe abstrata que representa a entidade Conta e contem métodos de
- * manipulação da mesma.
+ * Classe abstrata que representa a entidade Conta e contem mï¿½todos de
+ * manipulaï¿½ï¿½o da mesma.
  */
 
 public abstract class Conta {
@@ -22,7 +24,7 @@ public abstract class Conta {
     }
 
     /**
-     * Método básico de retorno de saldo.
+     * Mï¿½todo bï¿½sico de retorno de saldo.
      * 
      * @return o saldo da conta
      */
@@ -31,7 +33,7 @@ public abstract class Conta {
     }
 
     /**
-     * Método básico de retorno do identificador da conta.
+     * Mï¿½todo bï¿½sico de retorno do identificador da conta.
      * 
      * @return o identificador da conta
      */
@@ -40,7 +42,7 @@ public abstract class Conta {
     }
 
     /**
-     * Método a ser implementado de acordo com as regras definidas por cada
+     * Mï¿½todo a ser implementado de acordo com as regras definidas por cada
      * banco.
      * 
      * @return Limite da conta
@@ -49,15 +51,15 @@ public abstract class Conta {
     public abstract BigDecimal getLimite();
 
     /**
-     * Método que atualiza o saldo da conta e registra os lançamentos na conta,
+     * Mï¿½todo que atualiza o saldo da conta e registra os lanï¿½amentos na conta,
      * ou seja, adiciona os lancamentos em uma lista. Deve ser acionado sempre
      * que houver uma operacao de atualizacao de valores do saldo.
      * 
      * @param lancamento
-     *            Lancamento é um objeto do tipo lançamento composto por
-     *            descrição do lançamento, data do lançamento e valor. O valor
-     *            deverá ser positivo para creditos na conta e negativos para
-     *            débitos na conta.
+     *            Lancamento ï¿½ um objeto do tipo lanï¿½amento composto por
+     *            descriï¿½ï¿½o do lanï¿½amento, data do lanï¿½amento e valor. O valor
+     *            deverï¿½ ser positivo para creditos na conta e negativos para
+     *            dï¿½bitos na conta.
      */
     //alterado de protect para public
     public void registrarLancamento(Lancamento lancamento) {        
@@ -66,14 +68,25 @@ public abstract class Conta {
     }
 
     /**
-     * Método que deve retornar a lista de lançamentos realizadas na conta em um
-     * dado período.
+     * Mï¿½todo que deve retornar a lista de lanï¿½amentos realizadas na conta em um
+     * dado perï¿½odo.
      * 
      * @param dataInicial
      * @param dataFinal
-     * @return lista de lançamentos
+     * @return lista de lanï¿½amentos
      */
-    protected abstract List<Lancamento> consultaLancamento(
+    /*
+    protected abstract List<Lancamento> consultaLancamento( alterado por Renato 
+     */    
+    public abstract List<Lancamento> consultaLancamento(
             LocalDate dataInicial, LocalDate dataFinal);
+    
+    /**
+     * MÃ©todo criado por Renato para operaÃ§Ã£o invÃ¡lida.
+     * 
+     * @throws OperacaoInvalidaException
+     */
+     public abstract int verificarQuantidade (Conta conta, LocalDate date)
+     		throws OperacaoInvalidaException;
       
 }
