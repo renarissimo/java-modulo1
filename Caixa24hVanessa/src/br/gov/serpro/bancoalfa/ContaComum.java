@@ -33,7 +33,8 @@ public class ContaComum extends Conta{
 		}		
 	     return(extrato);	
 		}
-	
+
+		
 	 @Override
 	 public int verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
@@ -48,4 +49,5 @@ public class ContaComum extends Conta{
 	 }	 	        
 	 return i;				
 	 }
+	 	 
 }	

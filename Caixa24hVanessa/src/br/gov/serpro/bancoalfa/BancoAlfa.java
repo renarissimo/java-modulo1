@@ -13,6 +13,8 @@ import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 
 public class BancoAlfa extends Banco{
+	
+	private static final BigDecimal MENOS_UM =  new BigDecimal(-1); 
 		 	  
 
 	public BancoAlfa(String nome, Long numero) {
@@ -21,19 +23,13 @@ public class BancoAlfa extends Banco{
 	}
 
 	@Override
-	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException {
-		try {
-			conta.verificarQuantidade(conta, LocalDate.now());
-		} catch (OperacaoInvalidaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, OperacaoInvalidaException {		
+		conta.verificarQuantidade(conta, LocalDate.now());
 		
-		BigDecimal saldoAtual = conta.getSaldo();		
-		BigDecimal saldoPosterior = saldoAtual.subtract(valor).ZERO;
+				
 		LocalDate sysdate = LocalDate.now();		
-		Lancamento transacao = new Lancamento("Saque",saldoPosterior,sysdate);		
-		if (saldoPosterior.subtract(valor).compareTo(conta.getLimite()) == -1) {
+		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);		
+		if (conta.getSaldo().compareTo(conta.getLimite()) == -1) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);
@@ -78,13 +74,13 @@ public class BancoAlfa extends Banco{
 	@Override
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
 			throws TransferenciaInvalidaException,SaldoInsuficienteException {
-		BigDecimal saldoAtual = conta.getSaldo();		
-		BigDecimal saldoPosterior = saldoAtual.subtract(valorATransferir).ZERO;
-		BigDecimal saldoPosteriorDestino = saldoAtual.add(valorATransferir).ZERO;
+		//BigDecimal saldoAtual = conta.getSaldo();		
+		//BigDecimal saldoPosterior = saldoAtual.subtract(valorATransferir);
+		//BigDecimal saldoPosteriorDestino = saldoAtual.add(valorATransferir);
 		LocalDate sysdate = LocalDate.now();
-		Lancamento transacao = new Lancamento("Transferir",saldoPosterior,sysdate);		
-		Lancamento transacaoDestino = new Lancamento("Transferir",saldoPosteriorDestino,sysdate);
-		if (saldoPosterior.subtract(valorATransferir).compareTo(conta.getLimite()) == -1) {
+		Lancamento transacao = new Lancamento("Transferir",valorATransferir.multiply(MENOS_UM),sysdate);		
+		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);
+		if (conta.getSaldo().subtract(valorATransferir).compareTo(conta.getLimite()) == -1) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);

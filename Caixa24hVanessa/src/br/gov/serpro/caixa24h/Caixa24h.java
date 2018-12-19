@@ -26,7 +26,7 @@ public class Caixa24h {
     }
 
     public void sacar(BigDecimal valor, Conta conta)
-            throws SaldoInsuficienteException {
+            throws SaldoInsuficienteException, Exception {
         banco.sacar(valor, conta);
     }
 

@@ -36,9 +36,10 @@ public abstract class Banco {
      * @param valor
      * @param conta
      * @throws SaldoInsuficienteException
+     * @throws Exception 
      */
     public abstract void sacar(BigDecimal valor, Conta conta)
-            throws SaldoInsuficienteException;
+            throws SaldoInsuficienteException, Exception;
 
     /**
      * M�todo que deve registrar e efetuar o deposito em uma conta

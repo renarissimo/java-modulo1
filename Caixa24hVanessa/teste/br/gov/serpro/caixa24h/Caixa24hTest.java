@@ -36,7 +36,7 @@ public class Caixa24hTest {
     }
 
     @Test
-    public void deveChamarSacarDoMock() throws SaldoInsuficienteException {
+    public void deveChamarSacarDoMock() throws Exception {
         caixa = new Caixa24h(CONTA, BANCO);
         caixa.sacar(BigDecimal.ZERO, CONTA);
         // Apenas para testar se esta executando a chamada do mock
