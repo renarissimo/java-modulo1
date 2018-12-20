@@ -86,7 +86,7 @@ public abstract class Conta {
      * 
      * @throws OperacaoInvalidaException
      */
-     public abstract int verificarQuantidade (Conta conta, LocalDate date)
+     public abstract void verificarQuantidade (Conta conta, LocalDate date)
      		throws OperacaoInvalidaException;
       
 }

@@ -36,18 +36,19 @@ public class ContaComum extends Conta{
 
 		
 	 @Override
-	 public int verificarQuantidade (Conta conta, LocalDate date)
+	 public void verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
 		 int i =0;
 	 for (Lancamento lancamento : lancamentos) {
-		 if (lancamento.getData().equals(date)) {
+		 
+		 if (lancamento.getData().equals(date)) {		 
 		     i++;
+		     System.out.println(" i = " + i);
 		     if (i > 3) {
 		    	 throw new OperacaoInvalidaException();
 		     }
-		 }			
-	 }	 	        
-	 return i;				
+		 }					 
+	   }	 	        	 				
 	 }
 	 	 
 }	

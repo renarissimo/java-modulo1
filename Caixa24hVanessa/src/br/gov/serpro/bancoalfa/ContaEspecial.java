@@ -35,9 +35,9 @@ public class ContaEspecial extends Conta{
 		}
 	
 	@Override
-	 public int verificarQuantidade (Conta conta, LocalDate date)
+	 public void verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
-					return 0;
+					//return 0;
 	 }
 	
 }

@@ -29,11 +29,15 @@ public class BancoAlfa extends Banco{
 				
 		LocalDate sysdate = LocalDate.now();		
 		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);		
-		if (conta.getSaldo().compareTo(conta.getLimite()) == -1) {
+		System.out.println("Get Saldo = " + conta.getSaldo());
+		System.out.println("Limite = " + conta.getLimite());		
+		//if (conta.getSaldo().compareTo(conta.getLimite()) == -1) {
+		if ((conta.getSaldo().subtract(valor)).compareTo(conta.getLimite()) == -1) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);
-		}	
+		}
+		System.out.println("Get SaldoII = " + conta.getSaldo());
 									
 	}
 
@@ -74,18 +78,18 @@ public class BancoAlfa extends Banco{
 	@Override
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
 			throws TransferenciaInvalidaException,SaldoInsuficienteException {
-		//BigDecimal saldoAtual = conta.getSaldo();		
-		//BigDecimal saldoPosterior = saldoAtual.subtract(valorATransferir);
-		//BigDecimal saldoPosteriorDestino = saldoAtual.add(valorATransferir);
+		System.out.println("Consta destino saldo = " + contaDestino.getSaldo());
 		LocalDate sysdate = LocalDate.now();
 		Lancamento transacao = new Lancamento("Transferir",valorATransferir.multiply(MENOS_UM),sysdate);		
 		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);
-		if (conta.getSaldo().subtract(valorATransferir).compareTo(conta.getLimite()) == -1) {
+		System.out.println("Consta destino saldoII = " + contaDestino.getSaldo());
+		//if (conta.getSaldo().subtract(valorATransferir).compareTo(conta.getLimite()) == -1) {
+		if ((conta.getSaldo().subtract(valorATransferir)).compareTo(conta.getLimite()) == -1) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);
 			contaDestino.registrarLancamento(transacaoDestino);
-		}	
+		}		
 									
 	}
 			

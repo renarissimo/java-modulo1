@@ -28,9 +28,9 @@ public class ContaMock extends Conta {
 	}
 
 	@Override
-	public int verificarQuantidade(Conta conta, LocalDate date) throws OperacaoInvalidaException {
+	public void verificarQuantidade(Conta conta, LocalDate date) throws OperacaoInvalidaException {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
    
