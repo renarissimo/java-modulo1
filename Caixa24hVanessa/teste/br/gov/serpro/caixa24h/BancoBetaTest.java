@@ -1,44 +1,43 @@
 package br.gov.serpro.caixa24h;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import br.gov.serpro.banco.Conta;
-import br.gov.serpro.bancoalfa.BancoAlfa;
-import br.gov.serpro.bancoalfa.ContaComum;
-import br.gov.serpro.bancoalfa.ContaEspecial;
+import br.gov.serpro.bancobeta.BancoBeta;
+import br.gov.serpro.bancobeta.ContaComum;
+import br.gov.serpro.bancobeta.ContaPremium;
 import br.gov.serpro.exception.OperacaoInvalidaException;
 import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 
-public class BancoAlfaTest {
+public class BancoBetaTest {
 	
-	private BancoAlfa bancoAlfa;
-	private BancoAlfa bancoAlfaDois;
+	private BancoBeta bancoBeta;
+	private BancoBeta bancoBetaDois;
 	private ContaComum contaComum;
 	private ContaComum contaComumDois;
-	private ContaEspecial contaEspecial;
-	private ContaEspecial contaEspecialDois;
+	private ContaPremium contaPremium;
+	private ContaPremium contaPremiumDois;
 	
 	@Before
 	public void before() {
-		bancoAlfa = new BancoAlfa("Renato",1L);
+		bancoBeta = new BancoBeta("Renato",1L);
 		contaComum = new ContaComum (new BigDecimal(1000),"Comum 1");						       
 		contaComumDois = new ContaComum (new BigDecimal(500),"Comum 2");
-		bancoAlfaDois = new BancoAlfa("Sabrina",1L);
-		contaEspecial = new ContaEspecial (new BigDecimal(1000),"Especial 1");						       
-		contaEspecialDois = new ContaEspecial (new BigDecimal(500),"Especial 2");
+		bancoBetaDois = new BancoBeta("Sabrina",1L);
+		contaPremium = new ContaPremium (new BigDecimal(1000),"Especial 1");						       
+		contaPremiumDois = new ContaPremium (new BigDecimal(500),"Especial 2");
 	}
 	
 
 	@Test
 	public void testSacarUm() throws Exception {
     try {
-		bancoAlfa.sacar(new BigDecimal(500), contaComum);
+    	bancoBeta.sacar(new BigDecimal(500), contaComum);
 	} catch (SaldoInsuficienteException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -49,43 +48,43 @@ public class BancoAlfaTest {
 	
 		
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialUm() throws SaldoInsuficienteException, OperacaoInvalidaException {    
-		bancoAlfa.sacar(new BigDecimal(500), contaEspecial);	
+	public void testSacarEspecialUm() throws Exception {    
+		bancoBeta.sacar(new BigDecimal(500), contaPremium);	
 	}
 	
 	
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialDois() throws SaldoInsuficienteException, OperacaoInvalidaException {    
-		bancoAlfa.sacar(new BigDecimal(2500), contaEspecial);	
+	public void testSacarEspecialDois() throws Exception {    
+		bancoBeta.sacar(new BigDecimal(2500), contaPremium);	
 	}
 	
 			
 	@Test
 	public void testTransferirValorEspecialUm() throws TransferenciaInvalidaException, SaldoInsuficienteException {
-		bancoAlfa.transferirValor(new BigDecimal(300), contaEspecialDois, contaEspecial);		
-		assertEquals(new BigDecimal(800),contaEspecialDois.getSaldo());		
-		assertEquals(new BigDecimal(700),contaEspecial.getSaldo());
+		bancoBeta.transferirValor(new BigDecimal(300), contaPremiumDois, contaPremium);		
+		assertEquals(new BigDecimal(800),contaPremiumDois.getSaldo());		
+		assertEquals(new BigDecimal(700),contaPremium.getSaldo());
 	}
 	
 	@Test
 	public void testTransferirValorUm() throws TransferenciaInvalidaException, SaldoInsuficienteException {
 		
-	    bancoAlfa.transferirValor(new BigDecimal(200), contaComumDois, contaComum);		
+	    bancoBeta.transferirValor(new BigDecimal(200), contaComumDois, contaComum);		
 		assertEquals(new BigDecimal(700),contaComumDois.getSaldo());		
 		assertEquals(new BigDecimal(800),contaComum.getSaldo());
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
 	public void testDeposito() throws OperacaoInvalidaException {		
-			bancoAlfa.depositar(new BigDecimal(500), contaComum);		
+		bancoBeta.depositar(new BigDecimal(500), contaComum);		
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
 	public void testQuantidadeOperacoes() throws SaldoInsuficienteException, Exception {
-		bancoAlfa.sacar(new BigDecimal(100), contaComum);
-		bancoAlfa.sacar(new BigDecimal(100), contaComum);
-		bancoAlfa.sacar(new BigDecimal(100), contaComum);
-		bancoAlfa.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
 	}
 	
 	

@@ -1,4 +1,4 @@
-package br.gov.serpro.bancoalfa;
+package br.gov.serpro.bancobeta;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,9 +8,9 @@ import br.gov.serpro.banco.Conta;
 import br.gov.serpro.banco.Lancamento;
 import br.gov.serpro.exception.OperacaoInvalidaException;
 
-public class ContaComum extends Conta{
+public class ContaPremium extends Conta{
 
-	public ContaComum(BigDecimal saldo, String idConta) {
+	public ContaPremium(BigDecimal saldo, String idConta) {
 		super(saldo, idConta);
 		// TODO Auto-generated constructor stub
 	}
@@ -18,7 +18,7 @@ public class ContaComum extends Conta{
 	@Override
 	public BigDecimal getLimite() {
 		// TODO Auto-generated method stub
-		return new BigDecimal(0.00);
+		return new BigDecimal(5000.00);
 	}
 
 	@Override
@@ -33,20 +33,11 @@ public class ContaComum extends Conta{
 		}		
 	     return(extrato);	
 		}
-
-		
-	 @Override
+	
+	@Override
 	 public void verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
-		 int i =0;
-	 for (Lancamento lancamento : lancamentos) {
-		 if (lancamento.getData().equals(date)) {		 
-		     ++i;		    
-		     if (i >= 3) {
-		    	 throw new OperacaoInvalidaException();
-		     }
-		 }		
-	   }	 	        	 				
+					//return 0;
 	 }
-	 	 
-}	
+
+}

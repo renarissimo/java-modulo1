@@ -24,20 +24,14 @@ public class BancoAlfa extends Banco{
 
 	@Override
 	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, OperacaoInvalidaException {		
-		conta.verificarQuantidade(conta, LocalDate.now());
-		
-				
+		conta.verificarQuantidade(conta, LocalDate.now());						
 		LocalDate sysdate = LocalDate.now();		
-		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);		
-		System.out.println("Get Saldo = " + conta.getSaldo());
-		System.out.println("Limite = " + conta.getLimite());		
-		//if (conta.getSaldo().compareTo(conta.getLimite()) == -1) {
-		if ((conta.getSaldo().subtract(valor)).compareTo(conta.getLimite()) == -1) {
+		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);							
+		if   ((conta.getSaldo().add(conta.getLimite())).compareTo(valor) == -1) {		
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);
-		}
-		System.out.println("Get SaldoII = " + conta.getSaldo());
+		}		
 									
 	}
 
@@ -54,9 +48,7 @@ public class BancoAlfa extends Banco{
 		} catch (OperacaoInvalidaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
-		LocalDate sysdate = LocalDate.now();
-		Lancamento transacao = new Lancamento("Consultar Saldo",conta.getSaldo(),sysdate);
+		}				
 		return conta.getSaldo();
 	}
 
@@ -77,14 +69,12 @@ public class BancoAlfa extends Banco{
 	// Verificar a necessidade da exce��o TransferenciaInvalidaException
 	@Override
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
-			throws TransferenciaInvalidaException,SaldoInsuficienteException {
-		System.out.println("Consta destino saldo = " + contaDestino.getSaldo());
+			throws TransferenciaInvalidaException,SaldoInsuficienteException {		
 		LocalDate sysdate = LocalDate.now();
 		Lancamento transacao = new Lancamento("Transferir",valorATransferir.multiply(MENOS_UM),sysdate);		
-		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);
-		System.out.println("Consta destino saldoII = " + contaDestino.getSaldo());
-		//if (conta.getSaldo().subtract(valorATransferir).compareTo(conta.getLimite()) == -1) {
-		if ((conta.getSaldo().subtract(valorATransferir)).compareTo(conta.getLimite()) == -1) {
+		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);		
+
+		if ((conta.getSaldo().add(conta.getLimite())).compareTo(valorATransferir) == -1) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);

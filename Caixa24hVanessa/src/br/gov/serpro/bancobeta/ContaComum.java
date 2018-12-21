@@ -1,4 +1,4 @@
-package br.gov.serpro.bancoalfa;
+package br.gov.serpro.bancobeta;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,13 +18,12 @@ public class ContaComum extends Conta{
 	@Override
 	public BigDecimal getLimite() {
 		// TODO Auto-generated method stub
-		return new BigDecimal(0.00);
+		return new BigDecimal(200);
 	}
 
 	@Override
 	public List<Lancamento> consultaLancamento(LocalDate dataInicial, LocalDate dataFinal) {
-						
-		List<Lancamento> extrato = null;;
+    List<Lancamento> extrato = null;;
 		
 		for (Lancamento lancamento : lancamentos) {
 		    if (lancamento.getData().isAfter(dataInicial)||(lancamento.getData().isBefore(dataFinal))) {
@@ -32,9 +31,8 @@ public class ContaComum extends Conta{
 		    }			
 		}		
 	     return(extrato);	
-		}
-
-		
+	}
+	
 	 @Override
 	 public void verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
@@ -42,11 +40,11 @@ public class ContaComum extends Conta{
 	 for (Lancamento lancamento : lancamentos) {
 		 if (lancamento.getData().equals(date)) {		 
 		     ++i;		    
-		     if (i >= 3) {
+		     if (i >= 2) {
 		    	 throw new OperacaoInvalidaException();
 		     }
 		 }		
 	   }	 	        	 				
 	 }
-	 	 
-}	
+
+}
