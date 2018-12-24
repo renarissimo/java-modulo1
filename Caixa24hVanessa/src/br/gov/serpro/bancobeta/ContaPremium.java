@@ -37,7 +37,7 @@ public class ContaPremium extends Conta{
 	@Override
 	 public void verificarQuantidade (Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
-					//return 0;
+		 				
 	 }
 
 }

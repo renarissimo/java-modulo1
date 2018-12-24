@@ -35,27 +35,23 @@ public class BancoBetaTest {
 	
 
 	@Test
-	public void testSacarUm() throws Exception {
-    try {
-    	bancoBeta.sacar(new BigDecimal(500), contaComum);
-	} catch (SaldoInsuficienteException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    assertEquals(new BigDecimal(500),contaComum.getSaldo());
+	public void testSacarUm() throws SaldoInsuficienteException, Exception{
+	bancoBeta.sacar(new BigDecimal(500), contaComum);	
+    assertEquals(new BigDecimal(496.50),contaComum.getSaldo());
 	}
 	
 	
 		
-	@Test(expected = SaldoInsuficienteException.class)
+	@Test
 	public void testSacarEspecialUm() throws Exception {    
-		bancoBeta.sacar(new BigDecimal(500), contaPremium);	
+	bancoBeta.sacar(new BigDecimal(500.00), contaPremium);	
+	assertEquals(new BigDecimal(496.50),contaPremium.getSaldo());
 	}
 	
 	
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialDois() throws Exception {    
-		bancoBeta.sacar(new BigDecimal(2500), contaPremium);	
+	public void testSacarEspecialDois() throws SaldoInsuficienteException, Exception {    
+		bancoBeta.sacar(new BigDecimal(7500), contaPremium);	
 	}
 	
 			
@@ -63,7 +59,7 @@ public class BancoBetaTest {
 	public void testTransferirValorEspecialUm() throws TransferenciaInvalidaException, SaldoInsuficienteException {
 		bancoBeta.transferirValor(new BigDecimal(300), contaPremiumDois, contaPremium);		
 		assertEquals(new BigDecimal(800),contaPremiumDois.getSaldo());		
-		assertEquals(new BigDecimal(700),contaPremium.getSaldo());
+		assertEquals(new BigDecimal(699),contaPremium.getSaldo());
 	}
 	
 	@Test
@@ -71,20 +67,20 @@ public class BancoBetaTest {
 		
 	    bancoBeta.transferirValor(new BigDecimal(200), contaComumDois, contaComum);		
 		assertEquals(new BigDecimal(700),contaComumDois.getSaldo());		
-		assertEquals(new BigDecimal(800),contaComum.getSaldo());
+		assertEquals(new BigDecimal(799),contaComum.getSaldo());
 	}
 	
-	@Test(expected = OperacaoInvalidaException.class)
+	@Test
 	public void testDeposito() throws OperacaoInvalidaException {		
-		bancoBeta.depositar(new BigDecimal(500), contaComum);		
+		bancoBeta.depositar(new BigDecimal(500), contaComum);
+		assertEquals(new BigDecimal(1500),contaComum.getSaldo());
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
 	public void testQuantidadeOperacoes() throws SaldoInsuficienteException, Exception {
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
-		bancoBeta.sacar(new BigDecimal(100), contaComum);
-		bancoBeta.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);		
 	}
 	
 	

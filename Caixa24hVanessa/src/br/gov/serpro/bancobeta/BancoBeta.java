@@ -1,6 +1,7 @@
 package br.gov.serpro.bancobeta;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,9 +15,10 @@ import br.gov.serpro.exception.TransferenciaInvalidaException;
 public class BancoBeta extends Banco{
 	
 	private static final BigDecimal MENOS_UM =  new BigDecimal(-1);
-	private static final BigDecimal TAXA_SAQUE =  new BigDecimal(000.5);
+	private static final BigDecimal TAXA_SAQUE =  new BigDecimal(0.005);
 	private static final BigDecimal CUSTO_SAQUE =  new BigDecimal(1);
 	private static final BigDecimal TAXA_TRANSFERENCIA =  new BigDecimal(1);
+	private static final MathContext mc = new MathContext(2); // 2 precision
 	
 
 	public BancoBeta(String nome, Long numero) {
@@ -27,9 +29,9 @@ public class BancoBeta extends Banco{
 	@Override
 	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, Exception {
 		conta.verificarQuantidade(conta, LocalDate.now());						
-		LocalDate sysdate = LocalDate.now();
-		valor = (valor.add(valor.multiply(TAXA_SAQUE)).add(CUSTO_SAQUE));
-		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);							
+		LocalDate sysdate = LocalDate.now();		
+		valor = (valor.add(valor.multiply(TAXA_SAQUE,mc)).add(CUSTO_SAQUE));		
+		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);		
 		if   ((conta.getSaldo().add(conta.getLimite())).compareTo(valor) == -1) {		
 			throw new SaldoInsuficienteException();
 		}else {			
@@ -67,7 +69,7 @@ public class BancoBeta extends Banco{
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
 			throws TransferenciaInvalidaException,SaldoInsuficienteException {		
 		LocalDate sysdate = LocalDate.now();
-		Lancamento transacao = new Lancamento("Transferir",valorATransferir.add(TAXA_TRANSFERENCIA),sysdate);		
+		Lancamento transacao = new Lancamento("Transferir",(valorATransferir.add(TAXA_TRANSFERENCIA)).multiply(MENOS_UM),sysdate);		
 		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);		
 
 		if ((conta.getSaldo().add(conta.getLimite())).compareTo(valorATransferir.add(TAXA_TRANSFERENCIA)) == -1) {
