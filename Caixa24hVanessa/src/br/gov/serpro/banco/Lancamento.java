@@ -2,7 +2,6 @@ package br.gov.serpro.banco;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Lancamento {
     String descricao;
@@ -16,19 +15,19 @@ public class Lancamento {
     }
 
     // Criado por Renato
-	public String getDescricao() {
-		return descricao;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	//Criado por Renato
-	public BigDecimal getValor() {
-		return valor;
-	}
+    //Criado por Renato
+    public BigDecimal getValor() {
+        return valor;
+    }
 
-	//Criado por Renato
-	public LocalDate getData() {
-		return data;
-	}
-    
-    
-}
+    //Criado por Renato
+    public LocalDate getData() {
+        return data;
+    }
+
+    }
+

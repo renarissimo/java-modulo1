@@ -56,7 +56,7 @@ public abstract class Banco {
      * @param conta
      * @return
      */
-    public abstract BigDecimal consultarSaldo(Conta conta);
+    public abstract BigDecimal consultarSaldo(Conta conta) throws OperacaoInvalidaException;
 
     /**
      * M�todo que deve consultar os lancamentos realizados em uma conta
@@ -67,7 +67,7 @@ public abstract class Banco {
      * @return lista de lanc�amentos da conta
      */
     public abstract List<Lancamento> consultaExtrato(Conta conta,
-            LocalDate dataInicio, LocalDate dataFim);
+            LocalDate dataInicio, LocalDate dataFim)throws OperacaoInvalidaException;
 
     /**
      * M�todo que deve registrar e transferir valores entres contas

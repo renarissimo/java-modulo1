@@ -12,12 +12,12 @@ public class ContaEspecial extends Conta{
 
 	public ContaEspecial(BigDecimal saldo, String idConta) {
 		super(saldo, idConta);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
 	public BigDecimal getLimite() {
-		// TODO Auto-generated method stub
+
 		return new BigDecimal(1000.00);
 	}
 
@@ -35,7 +35,7 @@ public class ContaEspecial extends Conta{
 		}
 	
 	@Override
-	 public void verificarQuantidade (Conta conta, LocalDate date)
+	 public void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
 					//return 0;
 	 }

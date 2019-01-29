@@ -2,7 +2,6 @@ package br.gov.serpro.bancoalfa;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import br.gov.serpro.banco.Banco;
@@ -19,15 +18,14 @@ public class BancoAlfa extends Banco{
 
 	public BancoAlfa(String nome, Long numero) {
 		super(nome, numero);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, OperacaoInvalidaException {		
-		conta.verificarQuantidade(conta, LocalDate.now());						
+		conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
 		LocalDate sysdate = LocalDate.now();		
-		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);							
-		if   ((conta.getSaldo().add(conta.getLimite())).compareTo(valor) == -1) {		
+		Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);
+		if (conta.aceitarSaque(conta.getSaldo(), conta.getLimite(), valor) == false) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);
@@ -42,26 +40,15 @@ public class BancoAlfa extends Banco{
 	}
 
 	@Override
-	public BigDecimal consultarSaldo(Conta conta) {
-		try {
-			conta.verificarQuantidade(conta, LocalDate.now());
-		} catch (OperacaoInvalidaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}				
-		return conta.getSaldo();
+	public BigDecimal consultarSaldo(Conta conta) throws OperacaoInvalidaException {
+		return null;
 	}
 
 	@Override
-	public List<Lancamento> consultaExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
-		try {
-			conta.verificarQuantidade(conta, LocalDate.now());
-		} catch (OperacaoInvalidaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+	public List<Lancamento> consultaExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim) throws OperacaoInvalidaException{
+		conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
 		LocalDate sysdate = LocalDate.now();
-		Lancamento transacao = new Lancamento("Consultar Extrato",conta.getSaldo(),sysdate); 
+		Lancamento transacao = new Lancamento("Consultar Extrato",conta.getSaldo(),sysdate);
 		return conta.consultaLancamento(dataInicio, dataFim);
 		
 	}
@@ -74,7 +61,7 @@ public class BancoAlfa extends Banco{
 		Lancamento transacao = new Lancamento("Transferir",valorATransferir.multiply(MENOS_UM),sysdate);		
 		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);		
 
-		if ((conta.getSaldo().add(conta.getLimite())).compareTo(valorATransferir) == -1) {
+		if (conta.saldoSuficienteParaTransferirValor(conta.getSaldo(),conta.getLimite(),valorATransferir) == false) {
 			throw new SaldoInsuficienteException();
 		}else {			
 			conta.registrarLancamento(transacao);

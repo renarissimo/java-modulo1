@@ -1,15 +1,15 @@
 package br.gov.serpro.caixa24h;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-
 import br.gov.serpro.banco.Banco;
 import br.gov.serpro.banco.Conta;
 import br.gov.serpro.banco.Lancamento;
 import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 public class BancoMock extends Banco {
     Date data = new Date(System.currentTimeMillis());

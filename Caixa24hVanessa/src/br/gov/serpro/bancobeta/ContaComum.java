@@ -10,14 +10,16 @@ import br.gov.serpro.exception.OperacaoInvalidaException;
 
 public class ContaComum extends Conta{
 
+	private static final int QUANTIDADEOPERACOES =  2;
+
 	public ContaComum(BigDecimal saldo, String idConta) {
 		super(saldo, idConta);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
 	public BigDecimal getLimite() {
-		// TODO Auto-generated method stub
+
 		return new BigDecimal(200);
 	}
 
@@ -34,13 +36,13 @@ public class ContaComum extends Conta{
 	}
 	
 	 @Override
-	 public void verificarQuantidade (Conta conta, LocalDate date)
+	 public void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
 		 int i =0;
 	 for (Lancamento lancamento : lancamentos) {
 		 if (lancamento.getData().equals(date)) {		 
 		     ++i;		    
-		     if (i >= 2) {
+		     if (i >= QUANTIDADEOPERACOES) {
 		    	 throw new OperacaoInvalidaException();
 		     }
 		 }		

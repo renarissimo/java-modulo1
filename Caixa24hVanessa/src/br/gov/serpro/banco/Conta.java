@@ -86,7 +86,23 @@ public abstract class Conta {
      * 
      * @throws OperacaoInvalidaException
      */
-     public abstract void verificarQuantidade (Conta conta, LocalDate date)
+     public abstract void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
      		throws OperacaoInvalidaException;
+
+     public boolean saldoSuficienteParaTransferirValor(BigDecimal saldo, BigDecimal limite, BigDecimal valorATransferir){
+         if ((saldo.add(limite)).compareTo(valorATransferir) == -1) {
+             return false;
+         }else{
+             return true;
+         }
+     }
+
+    public boolean aceitarSaque(BigDecimal saldo, BigDecimal limite, BigDecimal valor){
+        if((saldo.add(limite)).compareTo(valor) == -1) {
+            return false;
+        }else{
+            return true;
+        }
+    }
       
 }

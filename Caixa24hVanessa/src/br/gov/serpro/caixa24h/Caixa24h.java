@@ -30,21 +30,16 @@ public class Caixa24h {
         banco.sacar(valor, conta);
     }
 
-    public void depositar(BigDecimal valor, Conta conta) {
-        try {
-			banco.depositar(valor, conta);
-		} catch (OperacaoInvalidaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void depositar(BigDecimal valor, Conta conta) throws  OperacaoInvalidaException{
+
     }
 
-    public BigDecimal consultarSaldo(Conta conta) {
+    public BigDecimal consultarSaldo(Conta conta)  throws  OperacaoInvalidaException{
         return banco.consultarSaldo(conta);
     }
 
     public List<Lancamento> consultaExtrato(Conta conta, LocalDate dataInicio,
-            LocalDate dataFim) {
+            LocalDate dataFim)   throws  OperacaoInvalidaException{
         return banco.consultaExtrato(conta, dataInicio, dataFim);
     }
 

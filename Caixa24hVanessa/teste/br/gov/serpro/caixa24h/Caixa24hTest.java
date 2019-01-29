@@ -1,14 +1,13 @@
 package br.gov.serpro.caixa24h;
 
-import static org.junit.Assert.assertNull;
+import br.gov.serpro.exception.SaldoInsuficienteException;
+import br.gov.serpro.exception.TransferenciaInvalidaException;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import org.junit.Test;
-
-import br.gov.serpro.exception.SaldoInsuficienteException;
-import br.gov.serpro.exception.TransferenciaInvalidaException;
+import static org.junit.Assert.assertNull;
 
 public class Caixa24hTest {
 
