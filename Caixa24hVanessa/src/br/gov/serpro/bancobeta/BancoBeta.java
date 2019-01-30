@@ -28,11 +28,12 @@ public class BancoBeta extends Banco{
 
     @Override
     public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, Exception {
-        conta.verificarQuantidade(conta, LocalDate.now());
+        conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         LocalDate sysdate = LocalDate.now();
         valor = (valor.add(valor.multiply(TAXA_SAQUE,mc)).add(CUSTO_SAQUE));
         Lancamento transacao = new Lancamento("Saque",valor.multiply(MENOS_UM),sysdate);
-        if   ((conta.getSaldo().add(conta.getLimite())).compareTo(valor) == -1) {
+
+        if (conta.aceitarSaque(conta.getSaldo(), conta.getLimite(), valor) == false) {
             throw new SaldoInsuficienteException();
         }else {
             conta.registrarLancamento(transacao);
@@ -42,7 +43,7 @@ public class BancoBeta extends Banco{
 
     @Override
     public void depositar(BigDecimal valor, Conta conta) throws OperacaoInvalidaException {
-        conta.verificarQuantidade(conta, LocalDate.now());
+        conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         LocalDate sysdate = LocalDate.now();
         Lancamento transacao = new Lancamento("Saque",valor,sysdate);
         conta.registrarLancamento(transacao);
@@ -51,7 +52,7 @@ public class BancoBeta extends Banco{
     @Override
     public BigDecimal consultarSaldo(Conta conta) {
         try {
-            conta.verificarQuantidade(conta, LocalDate.now());
+            conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         } catch (OperacaoInvalidaException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -72,7 +73,8 @@ public class BancoBeta extends Banco{
         Lancamento transacao = new Lancamento("Transferir",(valorATransferir.add(TAXA_TRANSFERENCIA)).multiply(MENOS_UM),sysdate);
         Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);
 
-        if ((conta.getSaldo().add(conta.getLimite())).compareTo(valorATransferir.add(TAXA_TRANSFERENCIA)) == -1) {
+
+        if (conta.saldoSuficienteParaTransferirValor(conta.getSaldo(),conta.getLimite(),valorATransferir) == false) {
             throw new SaldoInsuficienteException();
         }else {
             conta.registrarLancamento(transacao);
