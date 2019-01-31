@@ -5,7 +5,7 @@ public class OperacaoInvalidaException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public OperacaoInvalidaException() {
-		super("OperaÁ„o Inv·lida para este Banco");	
+		super("Opera√ß√£o Inv√°lida para este Banco");
 	}
 
 }

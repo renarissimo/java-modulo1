@@ -34,7 +34,7 @@ public class BancoBetaTest {
 	
 
 	@Test
-	public void testSacarUm(){
+	public void testSacarContaComumComSucesso(){
 	try {
 		bancoBeta.sacar(new BigDecimal(500), contaComum);
 	}catch (SaldoInsuficienteException e) {
@@ -48,7 +48,7 @@ public class BancoBetaTest {
 	
 		
 	@Test
-	public void testSacarEspecialUm() {
+	public void testSacarContaPremiumComSucesso() {
 	try {
 		bancoBeta.sacar(new BigDecimal(500.00), contaPremium);
 	}catch(Exception e) {
@@ -59,23 +59,22 @@ public class BancoBetaTest {
 	
 	
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialDois() throws SaldoInsuficienteException, Exception {
+	public void testSacarContaPremiumComErro() throws SaldoInsuficienteException, Exception {
 	try {
 		bancoBeta.sacar(new BigDecimal(7500), contaPremium);
 	}catch(SaldoInsuficienteException e) {
 		e.printStackTrace();
 	}catch(Exception e2){
 		e2.printStackTrace();
+
 	}
 	}
 	
 			
 	@Test
-	public void testTransferirValorEspecialUm(){
+	public void testTransferirValorcontaPremiumComSucesso(){
 	try {
 		bancoBeta.transferirValor(new BigDecimal(300), contaPremiumDois, contaPremium);
-	}catch(TransferenciaInvalidaException e) {
-		e.printStackTrace();
 	}catch(SaldoInsuficienteException e2){
 		e2.printStackTrace();
 	}
@@ -84,11 +83,9 @@ public class BancoBetaTest {
 	}
 	
 	@Test
-	public void testTransferirValorUm(){
+	public void testTransferirValorcontaComumComSucesso(){
 	try {
 		bancoBeta.transferirValor(new BigDecimal(200), contaComumDois, contaComum);
-	}catch(TransferenciaInvalidaException e){
-		e.printStackTrace();
 	}catch(SaldoInsuficienteException e2){
 		e2.printStackTrace();
 	}
@@ -97,7 +94,7 @@ public class BancoBetaTest {
 	}
 	
 	@Test
-	public void testDeposito(){
+	public void testDepositoContaComumComSucesso(){
 	try {
 		bancoBeta.depositar(new BigDecimal(500), contaComum);
 	}catch(OperacaoInvalidaException e){
@@ -107,7 +104,7 @@ public class BancoBetaTest {
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testQuantidadeOperacoes(){
+	public void testQuantidadeOperacoesComErro(){
 	try {
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
 		bancoBeta.sacar(new BigDecimal(100), contaComum);

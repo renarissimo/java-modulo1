@@ -32,7 +32,7 @@ public class BancoAlfaTest {
 	
 
 	@Test
-	public void testSacarUm(){
+	public void testSacarComSucesso(){
     try {
 		bancoAlfa.sacar(new BigDecimal(500), contaComum);
 	} catch (SaldoInsuficienteException e) {
@@ -47,7 +47,7 @@ public class BancoAlfaTest {
 	
 		
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialUm(){
+	public void testSacarEspecialComSaldoInsuficiente(){
 	try {
 		bancoAlfa.sacar(new BigDecimal(500), contaEspecial);
 	    } catch (SaldoInsuficienteException e ){
@@ -56,22 +56,10 @@ public class BancoAlfaTest {
    		  e2.printStackTrace();
 	    }
 	}
-	
-	
-	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialDois(){
-		try {
-			bancoAlfa.sacar(new BigDecimal(2500), contaEspecial);
-		} catch (SaldoInsuficienteException e ){
-			e.printStackTrace();
-		} catch (OperacaoInvalidaException e2) {
-			e2.printStackTrace();
-		}
-	}
-	
+
 			
 	@Test
-	public void testTransferirValorEspecialUm(){
+	public void testTransferirValorEspecialComSucesso(){
 		try {
 			bancoAlfa.transferirValor(new BigDecimal(300), contaEspecialDois, contaEspecial);
 		} catch (TransferenciaInvalidaException e ){
@@ -82,22 +70,10 @@ public class BancoAlfaTest {
 		assertEquals(new BigDecimal(800),contaEspecialDois.getSaldo());		
 		assertEquals(new BigDecimal(700),contaEspecial.getSaldo());
 	}
-	
-	@Test
-	public void testTransferirValorUm(){
-		try {
-			bancoAlfa.transferirValor(new BigDecimal(200), contaComumDois, contaComum);
-		} catch (TransferenciaInvalidaException e ){
-			e.printStackTrace();
-		} catch (SaldoInsuficienteException e2) {
-			e2.printStackTrace();
-		}
-		assertEquals(new BigDecimal(700),contaComumDois.getSaldo());		
-		assertEquals(new BigDecimal(800),contaComum.getSaldo());
-	}
+
 	
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testDeposito(){
+	public void testDepositoComErro(){
 		try {
 			bancoAlfa.depositar(new BigDecimal(500), contaComum);
 		} catch (OperacaoInvalidaException e){
@@ -106,7 +82,7 @@ public class BancoAlfaTest {
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testQuantidadeOperacoes(){
+	public void testQuantidadeOperacoesUltrapassado(){
 		try {
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);

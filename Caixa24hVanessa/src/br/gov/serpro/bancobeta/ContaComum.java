@@ -25,7 +25,7 @@ public class ContaComum extends Conta{
 
 	@Override
 	public List<Lancamento> consultaLancamento(LocalDate dataInicial, LocalDate dataFinal) {
-    List<Lancamento> extrato = null;;
+    List<Lancamento> extrato = null;
 		
 		for (Lancamento lancamento : lancamentos) {
 		    if (lancamento.getData().isAfter(dataInicial)||(lancamento.getData().isBefore(dataFinal))) {
