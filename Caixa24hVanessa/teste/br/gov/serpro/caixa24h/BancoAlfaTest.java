@@ -16,7 +16,6 @@ import static org.junit.Assert.assertEquals;
 public class BancoAlfaTest {
 	
 	private BancoAlfa bancoAlfa;
-	private BancoAlfa bancoAlfaDois;
 	private ContaComum contaComum;
 	private ContaComum contaComumDois;
 	private ContaEspecial contaEspecial;
@@ -27,7 +26,6 @@ public class BancoAlfaTest {
 		bancoAlfa = new BancoAlfa("Renato",1L);
 		contaComum = new ContaComum (new BigDecimal(1000),"Comum 1");						       
 		contaComumDois = new ContaComum (new BigDecimal(500),"Comum 2");
-		bancoAlfaDois = new BancoAlfa("Sabrina",1L);
 		contaEspecial = new ContaEspecial (new BigDecimal(1000),"Especial 1");						       
 		contaEspecialDois = new ContaEspecial (new BigDecimal(500),"Especial 2");
 	}

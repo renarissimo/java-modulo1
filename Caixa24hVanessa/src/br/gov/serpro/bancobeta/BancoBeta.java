@@ -27,7 +27,7 @@ public class BancoBeta extends Banco{
     }
 
     @Override
-    public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, Exception {
+    public void sacar(BigDecimal valor, Conta conta) throws SaldoInsuficienteException, OperacaoInvalidaException {
         conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         LocalDate sysdate = LocalDate.now();
         valor = (valor.add(valor.multiply(TAXA_SAQUE,mc)).add(CUSTO_SAQUE));
@@ -68,7 +68,7 @@ public class BancoBeta extends Banco{
 
     @Override
     public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
-            throws TransferenciaInvalidaException,SaldoInsuficienteException {
+            throws SaldoInsuficienteException {
         LocalDate sysdate = LocalDate.now();
         Lancamento transacao = new Lancamento("Transferir",(valorATransferir.add(TAXA_TRANSFERENCIA)).multiply(MENOS_UM),sysdate);
         Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);

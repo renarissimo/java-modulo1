@@ -38,11 +38,11 @@ public class ContaComum extends Conta{
 	 @Override
 	 public void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
 	     		throws OperacaoInvalidaException{
-		 int i =0;
+		 int contadorDeOperacoes =0;
 	 for (Lancamento lancamento : lancamentos) {
 		 if (lancamento.getData().equals(date)) {		 
-		     ++i;		    
-		     if (i >= QUANTIDADEOPERACOES) {
+		     ++contadorDeOperacoes;
+		     if (contadorDeOperacoes >= QUANTIDADEOPERACOES) {
 		    	 throw new OperacaoInvalidaException();
 		     }
 		 }		

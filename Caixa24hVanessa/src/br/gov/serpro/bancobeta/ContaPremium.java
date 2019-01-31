@@ -10,6 +10,8 @@ import br.gov.serpro.exception.OperacaoInvalidaException;
 
 public class ContaPremium extends Conta{
 
+	private static final int QUANTIDADEOPERACOES =  1000;
+
 	public ContaPremium(BigDecimal saldo, String idConta) {
 		super(saldo, idConta);
 		// TODO Auto-generated constructor stub
@@ -33,11 +35,19 @@ public class ContaPremium extends Conta{
 		}		
 	     return(extrato);	
 		}
-	
+
 	@Override
-	 public void verificarQuantidade (Conta conta, LocalDate date)
-	     		throws OperacaoInvalidaException{
-		 				
-	 }
+	public void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
+			throws OperacaoInvalidaException{
+		int contadorDeOperacoes =0;
+		for (Lancamento lancamento : lancamentos) {
+			if (lancamento.getData().equals(date)) {
+				++contadorDeOperacoes;
+				if (contadorDeOperacoes >= QUANTIDADEOPERACOES) {
+					throw new OperacaoInvalidaException();
+				}
+			}
+		}
+	}
 
 }

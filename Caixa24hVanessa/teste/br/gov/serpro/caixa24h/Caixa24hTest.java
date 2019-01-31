@@ -37,7 +37,7 @@ public class Caixa24hTest {
     @Test
     public void deveChamarSacarDoMock() throws Exception {
         caixa = new Caixa24h(CONTA, BANCO);
-        caixa.sacar(BigDecimal.ZERO, CONTA);
+        caixa.sacar(BigDecimal.ZERO);
         // Apenas para testar se esta executando a chamada do mock
     }
 
