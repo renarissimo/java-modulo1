@@ -38,16 +38,7 @@ public class ContaPremium extends Conta{
 
 	@Override
 	public void verificarQuantidadeOperacoes(Conta conta, LocalDate date)
-			throws OperacaoInvalidaException{
-		int contadorDeOperacoes =0;
-		for (Lancamento lancamento : lancamentos) {
-			if (lancamento.getData().equals(date)) {
-				++contadorDeOperacoes;
-				if (contadorDeOperacoes >= QUANTIDADEOPERACOES) {
-					throw new OperacaoInvalidaException();
-				}
-			}
-		}
+			throws OperacaoInvalidaException {
 	}
 
 }

@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class BancoAlfaTest {
 	
 	private BancoAlfa bancoAlfa;
+	private BancoAlfa bancoAlfaDois;
 	private ContaComum contaComum;
 	private ContaComum contaComumDois;
 	private ContaEspecial contaEspecial;
@@ -24,6 +25,7 @@ public class BancoAlfaTest {
 	@Before
 	public void before() {
 		bancoAlfa = new BancoAlfa("Renato",1L);
+		bancoAlfaDois = new BancoAlfa("Sabrina",2L);
 		contaComum = new ContaComum (new BigDecimal(1000),"Comum 1");						       
 		contaComumDois = new ContaComum (new BigDecimal(500),"Comum 2");
 		contaEspecial = new ContaEspecial (new BigDecimal(1000),"Especial 1");						       
@@ -45,53 +47,36 @@ public class BancoAlfaTest {
 	}
 	
 	
-		
+
 	@Test(expected = SaldoInsuficienteException.class)
-	public void testSacarEspecialComSaldoInsuficiente(){
-	try {
-		bancoAlfa.sacar(new BigDecimal(500), contaEspecial);
-	    } catch (SaldoInsuficienteException e ){
-		  e.printStackTrace();
-	    } catch (OperacaoInvalidaException e2) {
-   		  e2.printStackTrace();
-	    }
+	public void testSacarEspecialComSaldoInsuficiente() throws Exception{
+		bancoAlfaDois.sacar(new BigDecimal(3500), contaEspecial);
 	}
 
-			
+
+
 	@Test
-	public void testTransferirValorEspecialComSucesso(){
-		try {
+	public void testTransferirValorEspecialComSucesso() throws SaldoInsuficienteException {
+
 			bancoAlfa.transferirValor(new BigDecimal(300), contaEspecialDois, contaEspecial);
-		} catch (TransferenciaInvalidaException e ){
-			e.printStackTrace();
-		} catch (SaldoInsuficienteException e2) {
-			e2.printStackTrace();
-		}
+
 		assertEquals(new BigDecimal(800),contaEspecialDois.getSaldo());		
 		assertEquals(new BigDecimal(700),contaEspecial.getSaldo());
 	}
 
-	
+
+
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testDepositoComErro(){
-		try {
+	public void testDepositoComErro() throws OperacaoInvalidaException {
 			bancoAlfa.depositar(new BigDecimal(500), contaComum);
-		} catch (OperacaoInvalidaException e){
-			e.printStackTrace();
-		}
 	}
-	
+
+
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testQuantidadeOperacoesUltrapassado(){
-		try {
+	public void testQuantidadeOperacoesUltrapassado() throws OperacaoInvalidaException, SaldoInsuficienteException {
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);
 			bancoAlfa.sacar(new BigDecimal(100), contaComum);
-		} catch (SaldoInsuficienteException e) {
-		  e.printStackTrace();
-	    } catch(OperacaoInvalidaException e2) {
-		  e2.printStackTrace();
-	    }
 	}
 }

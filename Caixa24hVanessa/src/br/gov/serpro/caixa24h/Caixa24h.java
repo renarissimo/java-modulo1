@@ -16,7 +16,7 @@ public class Caixa24h {
     private Conta conta;
     private Banco banco;
 
-    public Caixa24h(Conta conta, Banco banco) {
+    public Caixa24h(Banco banco) {
         if (conta == null || banco == null) {
             throw new IllegalArgumentException("Banco ou conta invalidos");
         }
@@ -25,8 +25,8 @@ public class Caixa24h {
 
     }
 
-    public void sacar(BigDecimal valor)
-            throws SaldoInsuficienteException, Exception {
+    public void sacar(BigDecimal valor, Conta conta)
+            throws Exception {
         banco.sacar(valor, conta);
     }
 

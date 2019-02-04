@@ -1,5 +1,6 @@
 package br.gov.serpro.caixa24h;
 
+import br.gov.serpro.exception.OperacaoInvalidaException;
 import br.gov.serpro.exception.SaldoInsuficienteException;
 import br.gov.serpro.exception.TransferenciaInvalidaException;
 import org.junit.Test;
@@ -19,37 +20,37 @@ public class Caixa24hTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void naoDeveCriarContaComBancoNulo() {
-        caixa = new Caixa24h(CONTA, null);
+        caixa = new Caixa24h(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void naoDeveCriarContaNulo() {
-        caixa = new Caixa24h(null, BANCO);
+        caixa = new Caixa24h(BANCO);
     }
 
     @Test
-    public void deveChamarDepositarDoMock() {
-        caixa = new Caixa24h(CONTA, BANCO);
+    public void deveChamarDepositarDoMock()  throws OperacaoInvalidaException {
+        caixa = new Caixa24h(BANCO);
         caixa.depositar(BigDecimal.ZERO, CONTA);
         // Apenas para testar se esta executando a chamada do mock  
     }
 
     @Test
     public void deveChamarSacarDoMock() throws Exception {
-        caixa = new Caixa24h(CONTA, BANCO);
-        caixa.sacar(BigDecimal.ZERO);
+        caixa = new Caixa24h(BANCO);
+        caixa.sacar(BigDecimal.ZERO, CONTA);
         // Apenas para testar se esta executando a chamada do mock
     }
 
     @Test
-    public void deveChamarConsultarDoMock() {
-        caixa = new Caixa24h(CONTA, BANCO);
+    public void deveChamarConsultarDoMock() throws  OperacaoInvalidaException {
+        caixa = new Caixa24h(BANCO);
         assertNull(caixa.consultarSaldo(CONTA));
     }
 
     @Test
-    public void deveChamarConsultarExtratoDoMock() {
-        caixa = new Caixa24h(CONTA, BANCO);
+    public void deveChamarConsultarExtratoDoMock() throws  OperacaoInvalidaException {
+        caixa = new Caixa24h(BANCO);
         LocalDate dataInicio = LocalDate.parse("2018-01-01");
         LocalDate dataFim = LocalDate.parse("2018-12-05");
         assertNull(caixa.consultaExtrato(CONTA, dataInicio, dataFim));
@@ -58,7 +59,7 @@ public class Caixa24hTest {
     @Test
     public void deveChamarTransferirValorDoMock()
             throws TransferenciaInvalidaException, SaldoInsuficienteException {
-        caixa = new Caixa24h(CONTA, BANCO);
+        caixa = new Caixa24h(BANCO);
         caixa.transferirValor(BigDecimal.ZERO, CONTADESTINO, CONTA);
         // Apenas para testar se esta executando a chamada do mock
     }

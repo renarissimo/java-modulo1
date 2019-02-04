@@ -34,41 +34,25 @@ public class BancoBetaTest {
 	
 
 	@Test
-	public void testSacarContaComumComSucesso(){
-	try {
-		bancoBeta.sacar(new BigDecimal(500), contaComum);
-	}catch (SaldoInsuficienteException e) {
-	   	e.printStackTrace();
-	}catch (Exception e2) {
-		e2.printStackTrace();
-	}
+	public void testSacarContaComumComSucesso() throws Exception{
+		bancoBeta.sacar(new BigDecimal(5500), contaComum);
     assertEquals(new BigDecimal(496.50),contaComum.getSaldo());
 	}
 	
 	
 		
 	@Test
-	public void testSacarContaPremiumComSucesso() {
-	try {
+	public void testSacarContaPremiumComSucesso() throws Exception{
 		bancoBeta.sacar(new BigDecimal(500.00), contaPremium);
-	}catch(Exception e) {
-		e.printStackTrace();
-	}
-	assertEquals(new BigDecimal(496.50),contaPremium.getSaldo());
+		assertEquals(new BigDecimal(496.50), contaPremium.getSaldo());
 	}
 	
 	
 	@Test(expected = SaldoInsuficienteException.class)
 	public void testSacarContaPremiumComErro() throws SaldoInsuficienteException, Exception {
-	try {
 		bancoBeta.sacar(new BigDecimal(7500), contaPremium);
-	}catch(SaldoInsuficienteException e) {
-		e.printStackTrace();
-	}catch(Exception e2){
-		e2.printStackTrace();
+	   }
 
-	}
-	}
 	
 			
 	@Test
@@ -104,16 +88,12 @@ public class BancoBetaTest {
 	}
 	
 	@Test(expected = OperacaoInvalidaException.class)
-	public void testQuantidadeOperacoesComErro(){
-	try {
+	public void testQuantidadeOperacoesComErro() throws  OperacaoInvalidaException, SaldoInsuficienteException{
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
 		bancoBeta.sacar(new BigDecimal(100), contaComum);
-	}catch(SaldoInsuficienteException e){
-		e.printStackTrace();
-	}catch(Exception e2){
-		e2.printStackTrace();
-	}
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
+		bancoBeta.sacar(new BigDecimal(100), contaComum);
 	}
 	
 	

@@ -10,7 +10,7 @@ import br.gov.serpro.exception.OperacaoInvalidaException;
 
 public class ContaComum extends Conta{
 
-	private static final int QUANTIDADEOPERACOES =  2;
+	private static final int QUANTIDADE_OPERACOES =  2;
 
 	public ContaComum(BigDecimal saldo, String idConta) {
 		super(saldo, idConta);
@@ -42,7 +42,7 @@ public class ContaComum extends Conta{
 	 for (Lancamento lancamento : lancamentos) {
 		 if (lancamento.getData().equals(date)) {		 
 		     ++contadorDeOperacoes;
-		     if (contadorDeOperacoes >= QUANTIDADEOPERACOES) {
+		     if (contadorDeOperacoes >= QUANTIDADE_OPERACOES) {
 		    	 throw new OperacaoInvalidaException();
 		     }
 		 }		
