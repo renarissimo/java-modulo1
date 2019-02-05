@@ -34,15 +34,9 @@ public class BancoAlfaTest {
 	
 
 	@Test
-	public void testSacarComSucesso(){
-    try {
+	public void testSacarComSucesso() throws OperacaoInvalidaException, SaldoInsuficienteException {
 		bancoAlfa.sacar(new BigDecimal(500), contaComum);
-	} catch (SaldoInsuficienteException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch(OperacaoInvalidaException e2) {
-		e2.printStackTrace();
-	}
+
     assertEquals(new BigDecimal(500),contaComum.getSaldo());
 	}
 	
@@ -56,9 +50,9 @@ public class BancoAlfaTest {
 
 
 	@Test
-	public void testTransferirValorEspecialComSucesso() throws SaldoInsuficienteException {
+	public void testTransferirValorEspecialComSucesso() throws SaldoInsuficienteException, OperacaoInvalidaException {
 
-			bancoAlfa.transferirValor(new BigDecimal(300), contaEspecialDois, contaEspecial);
+		bancoAlfa.transferirValor(new BigDecimal(300), contaEspecialDois, contaEspecial);
 
 		assertEquals(new BigDecimal(800),contaEspecialDois.getSaldo());		
 		assertEquals(new BigDecimal(700),contaEspecial.getSaldo());

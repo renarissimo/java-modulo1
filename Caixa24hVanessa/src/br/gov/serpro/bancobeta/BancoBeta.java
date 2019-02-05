@@ -54,21 +54,23 @@ public class BancoBeta extends Banco{
         try {
             conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         } catch (OperacaoInvalidaException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
         return conta.getSaldo();
     }
 
     @Override
-    public List<Lancamento> consultaExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim) {
+    public List<Lancamento> consultaExtrato(Conta conta, LocalDate dataInicio, LocalDate dataFim) throws OperacaoInvalidaException {
+        conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
-            throws SaldoInsuficienteException {
+            throws SaldoInsuficienteException, OperacaoInvalidaException {
+        conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
         LocalDate sysdate = LocalDate.now();
         Lancamento transacao = new Lancamento("Transferir",(valorATransferir.add(TAXA_TRANSFERENCIA)).multiply(MENOS_UM),sysdate);
         Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);

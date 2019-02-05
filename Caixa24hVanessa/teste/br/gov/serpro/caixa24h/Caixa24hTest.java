@@ -58,7 +58,7 @@ public class Caixa24hTest {
 
     @Test
     public void deveChamarTransferirValorDoMock()
-            throws TransferenciaInvalidaException, SaldoInsuficienteException {
+            throws TransferenciaInvalidaException, SaldoInsuficienteException, OperacaoInvalidaException {
         caixa = new Caixa24h(BANCO);
         caixa.transferirValor(BigDecimal.ZERO, CONTADESTINO, CONTA);
         // Apenas para testar se esta executando a chamada do mock

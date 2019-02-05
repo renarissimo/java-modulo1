@@ -35,7 +35,7 @@ public class BancoBetaTest {
 
 	@Test
 	public void testSacarContaComumComSucesso() throws Exception{
-		bancoBeta.sacar(new BigDecimal(5500), contaComum);
+		bancoBeta.sacar(new BigDecimal(500), contaComum);
     assertEquals(new BigDecimal(496.50),contaComum.getSaldo());
 	}
 	
@@ -56,34 +56,28 @@ public class BancoBetaTest {
 	
 			
 	@Test
-	public void testTransferirValorcontaPremiumComSucesso(){
-	try {
+	public void testTransferirValorcontaPremiumComSucesso() throws SaldoInsuficienteException, OperacaoInvalidaException {
+
 		bancoBeta.transferirValor(new BigDecimal(300), contaPremiumDois, contaPremium);
-	}catch(SaldoInsuficienteException e2){
-		e2.printStackTrace();
-	}
+
 		assertEquals(new BigDecimal(800),contaPremiumDois.getSaldo());		
 		assertEquals(new BigDecimal(699),contaPremium.getSaldo());
 	}
 	
 	@Test
-	public void testTransferirValorcontaComumComSucesso(){
-	try {
+	public void testTransferirValorcontaComumComSucesso() throws SaldoInsuficienteException, OperacaoInvalidaException {
+
 		bancoBeta.transferirValor(new BigDecimal(200), contaComumDois, contaComum);
-	}catch(SaldoInsuficienteException e2){
-		e2.printStackTrace();
-	}
+
 		assertEquals(new BigDecimal(700),contaComumDois.getSaldo());		
 		assertEquals(new BigDecimal(799),contaComum.getSaldo());
 	}
 	
 	@Test
-	public void testDepositoContaComumComSucesso(){
-	try {
+	public void testDepositoContaComumComSucesso() throws OperacaoInvalidaException {
+
 		bancoBeta.depositar(new BigDecimal(500), contaComum);
-	}catch(OperacaoInvalidaException e){
-		e.printStackTrace();
-	}
+
 		assertEquals(new BigDecimal(1500),contaComum.getSaldo());
 	}
 	

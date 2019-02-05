@@ -40,7 +40,8 @@ public class BancoAlfa extends Banco{
 	}
 
 	@Override
-	public BigDecimal consultarSaldo(Conta conta){
+	public BigDecimal consultarSaldo(Conta conta) throws OperacaoInvalidaException {
+		conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
 		return conta.getSaldo();
 	}
 
@@ -54,7 +55,8 @@ public class BancoAlfa extends Banco{
 	// Verificar a necessidade da exce��o TransferenciaInvalidaException
 	@Override
 	public void transferirValor(BigDecimal valorATransferir, Conta contaDestino, Conta conta)
-			throws SaldoInsuficienteException {
+			throws SaldoInsuficienteException, OperacaoInvalidaException {
+		conta.verificarQuantidadeOperacoes(conta, LocalDate.now());
 		LocalDate sysdate = LocalDate.now();
 		Lancamento transacao = new Lancamento("Transferir",valorATransferir.multiply(MENOS_UM),sysdate);		
 		Lancamento transacaoDestino = new Lancamento("Transferir",valorATransferir,sysdate);		

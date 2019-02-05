@@ -45,7 +45,7 @@ public class Caixa24h {
 
     public void transferirValor(BigDecimal valorATransferir,
             Conta contaDestino, Conta conta)
-            throws TransferenciaInvalidaException, SaldoInsuficienteException {
+            throws TransferenciaInvalidaException, SaldoInsuficienteException, OperacaoInvalidaException {
         banco.transferirValor(valorATransferir, contaDestino, conta);
 
     }
